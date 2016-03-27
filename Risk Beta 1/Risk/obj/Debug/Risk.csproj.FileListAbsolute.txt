@@ -26,3 +26,6 @@ E:\Risk\Risk\obj\Debug\Risk.csprojResolveAssemblyReference.cache
 E:\Risk\Risk\obj\Debug\Risk.RiskBoard.resources
 E:\Risk\Risk\obj\Debug\Risk.Properties.Resources.resources
 E:\Risk\Risk\obj\Debug\Risk.csproj.GenerateResource.Cache
+C:\Users\Liam Multhaup\Downloads\Risk Beta 1\Risk\bin\Debug\Risk.exe.config
+C:\Users\Liam Multhaup\Downloads\Risk Beta 1\Risk\obj\Debug\Risk.exe
+C:\Users\Liam Multhaup\Downloads\Risk Beta 1\Risk\obj\Debug\Risk.pdb
