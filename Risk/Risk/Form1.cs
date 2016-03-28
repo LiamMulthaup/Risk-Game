@@ -69,7 +69,12 @@ namespace Risk
             }
             if (turnPhase == 5 && color[colorid] != turnColor)
             {
-                CheckIfAdjacent(sender);
+                if (CheckIfAdjacent(sender, attackingTerritory) == true)
+                {
+                    defendingTerritory = sender;
+                    turnPhase = 6;
+                    runGame();
+                }
                 deffendingTroops = int.Parse(lbl.Text);
             }
             if (turnPhase == 9 && color[colorid] == turnColor && int.Parse(lbl.Text) != 1)
@@ -80,9 +85,7 @@ namespace Risk
             }
             if (turnPhase == 10 && color[colorid] == turnColor && attackingTerritory != sender)
             {
-                defendingTerritory = sender;
-                turnPhase = 11;
-                runGame();
+                checkifTransferrable(sender);
             }
             if (turnPhase == 1)
             {
@@ -102,6 +105,39 @@ namespace Risk
                 
             }
             lbl.Visible = true;
+        }
+
+        private void checkifTransferrable(object sender)
+        {
+            object territory = sender;
+            object[] territoryArray = new object[42] {
+                argentina, brazil, venezuela, peru,
+                centralAmerica, westernUnitedStates, easternUnitedStates, alberta, ontario, quebec, greenLand, northWestTerritory, alaska,
+                northAfrica, egypt, eastAfrica, congo, southAfrica, madagascar,
+                iceland, scandinavia, greatBritain, westernEurope, southernEurope, northernEurope, ukraine,
+                middleEast, afghanistan, india, siam, china, ural, siberia, mongolia, japan, irkutsk, yakutsk, kamchatka,
+                indonesia, newGuinea, easternAustralia, westernAustralia
+            };
+            bool[] pathTracker = new bool[42];
+            int counter = 0;
+            while (counter < territoryArray.Length)
+            {
+                object source = territoryArray[counter];
+                source = territoryArray;
+                if (CheckIfAdjacent(territory, source) == true)
+                {
+
+                }
+                else
+                {
+
+                }
+                counter++;
+            }
+
+            defendingTerritory = sender;
+            turnPhase = 11;
+            runGame();
         }
 
         private string findTerritoryStringName(object sender)
@@ -1568,56 +1604,56 @@ namespace Risk
             westernAustralia.Text = numberData[40];
             easternAustralia.Text = numberData[41];
         }
-        private void CheckIfAdjacent(object territory)
+        private bool CheckIfAdjacent(object territory, object source)
         {
-            if ((territory == argentina && (attackingTerritory == brazil || attackingTerritory == peru)) ||
-                (territory == peru && (attackingTerritory == brazil || attackingTerritory == argentina || attackingTerritory == venezuela)) ||
-                (territory == venezuela && (attackingTerritory == brazil || attackingTerritory == peru || attackingTerritory == centralAmerica)) ||
-                (territory == brazil && (attackingTerritory == northAfrica || attackingTerritory == argentina || attackingTerritory == venezuela)) ||
-                (territory == centralAmerica && (attackingTerritory == venezuela || attackingTerritory == easternUnitedStates || attackingTerritory == westernUnitedStates)) ||
-                (territory == easternUnitedStates && (attackingTerritory == westernUnitedStates || attackingTerritory == centralAmerica || attackingTerritory == alberta || attackingTerritory == ontario)) ||
-                (territory == westernUnitedStates && (attackingTerritory == centralAmerica || attackingTerritory == easternUnitedStates || attackingTerritory == quebec || attackingTerritory == ontario)) ||
-                (territory == quebec && (attackingTerritory == ontario || attackingTerritory == greenLand || attackingTerritory == easternUnitedStates)) ||
-                (territory == ontario && (attackingTerritory == quebec || attackingTerritory == easternUnitedStates || attackingTerritory == westernUnitedStates || attackingTerritory == alberta || attackingTerritory == northWestTerritory || attackingTerritory == alaska || attackingTerritory == greenLand)) ||
-                (territory == alberta && (attackingTerritory == ontario || attackingTerritory == northWestTerritory || attackingTerritory == alaska || attackingTerritory == westernUnitedStates)) ||
-                (territory == alaska && (attackingTerritory == northWestTerritory || attackingTerritory == alberta || attackingTerritory == kamchatka)) ||
-                (territory == northWestTerritory && (attackingTerritory == alaska || attackingTerritory == alberta || attackingTerritory == ontario || attackingTerritory == greenLand)) ||
-                (territory == greenLand && (attackingTerritory == quebec || attackingTerritory == ontario || attackingTerritory == northWestTerritory || attackingTerritory == iceland)) ||
-                (territory == iceland && (attackingTerritory == scandinavia || attackingTerritory == greatBritain || attackingTerritory == greenLand)) ||
-                (territory == scandinavia && (attackingTerritory == iceland || attackingTerritory == greatBritain || attackingTerritory == ukraine || attackingTerritory == northernEurope)) ||
-                (territory == greatBritain && (attackingTerritory == northernEurope || attackingTerritory == westernEurope || attackingTerritory == scandinavia || attackingTerritory == iceland)) ||
-                (territory == westernEurope && (attackingTerritory == northAfrica || attackingTerritory == northernEurope || attackingTerritory == greatBritain || attackingTerritory == southernEurope)) ||
-                (territory == southernEurope && (attackingTerritory == westernEurope || attackingTerritory == northAfrica || attackingTerritory == egypt || attackingTerritory == ukraine || attackingTerritory == middleEast || attackingTerritory == northernEurope)) ||
-                (territory == northernEurope && (attackingTerritory == southernEurope || attackingTerritory == westernEurope || attackingTerritory == greatBritain || attackingTerritory == scandinavia || attackingTerritory == ukraine)) ||
-                (territory == ukraine && (attackingTerritory == scandinavia || attackingTerritory == northernEurope || attackingTerritory == southernEurope || attackingTerritory == middleEast || attackingTerritory == afghanistan || attackingTerritory == ural)) ||
-                (territory == northAfrica && (attackingTerritory == egypt || attackingTerritory == eastAfrica || attackingTerritory == congo || attackingTerritory == brazil || attackingTerritory == southernEurope || attackingTerritory == westernEurope)) ||
-                (territory == egypt && (attackingTerritory == northAfrica || attackingTerritory == southernEurope || attackingTerritory == middleEast || attackingTerritory == eastAfrica)) ||
-                (territory == eastAfrica && (attackingTerritory == northAfrica || attackingTerritory == middleEast || attackingTerritory == egypt || attackingTerritory == congo || attackingTerritory == southAfrica || attackingTerritory == madagascar)) ||
-                (territory == congo && (attackingTerritory == northAfrica || attackingTerritory == southAfrica || attackingTerritory == eastAfrica)) ||
-                (territory == southAfrica && (attackingTerritory == congo || attackingTerritory == eastAfrica || attackingTerritory == madagascar)) ||
-                (territory == madagascar && (attackingTerritory == southAfrica || attackingTerritory == eastAfrica)) ||
-                (territory == easternAustralia && (attackingTerritory == westernAustralia || attackingTerritory == newGuinea)) ||
-                (territory == westernAustralia && (attackingTerritory == easternAustralia || attackingTerritory == newGuinea)) ||
-                (territory == newGuinea && (attackingTerritory == westernAustralia || attackingTerritory == indonesia || attackingTerritory == easternAustralia)) ||
-                (territory == indonesia && (attackingTerritory == newGuinea || attackingTerritory == siam)) ||
-                (territory == siam && (attackingTerritory == india || attackingTerritory == china || attackingTerritory == indonesia)) ||
-                (territory == india && (attackingTerritory == siam || attackingTerritory == china || attackingTerritory == middleEast || attackingTerritory == afghanistan)) ||
-                (territory == middleEast && (attackingTerritory == eastAfrica || attackingTerritory == northAfrica || attackingTerritory == southernEurope || attackingTerritory == ukraine || attackingTerritory == afghanistan || attackingTerritory == india)) ||
-                (territory == afghanistan && (attackingTerritory == ukraine || attackingTerritory == middleEast || attackingTerritory == india || attackingTerritory == china || attackingTerritory == ural)) ||
-                (territory == china && (attackingTerritory == siberia || attackingTerritory == ural || attackingTerritory == afghanistan || attackingTerritory == india || attackingTerritory == siam || attackingTerritory == mongolia)) ||
-                (territory == ural && (attackingTerritory == ukraine || attackingTerritory == afghanistan || attackingTerritory == china || attackingTerritory == siberia)) ||
-                (territory == siberia && (attackingTerritory == ural || attackingTerritory == china || attackingTerritory == mongolia || attackingTerritory == irkutsk || attackingTerritory == yakutsk)) ||
-                (territory == mongolia && (attackingTerritory == japan || attackingTerritory == china || attackingTerritory == siberia || attackingTerritory == irkutsk || attackingTerritory == kamchatka)) ||
-                (territory == irkutsk && (attackingTerritory == siberia || attackingTerritory == mongolia || attackingTerritory == kamchatka || attackingTerritory == yakutsk)) ||
-                (territory == yakutsk && (attackingTerritory == irkutsk || attackingTerritory == siberia || attackingTerritory == kamchatka)) ||
-                (territory == japan && (attackingTerritory == kamchatka || attackingTerritory == mongolia || attackingTerritory == venezuela)) ||
-                (territory == kamchatka && (attackingTerritory == alaska || attackingTerritory == irkutsk || attackingTerritory == yakutsk || attackingTerritory == mongolia || attackingTerritory == japan))
+            bool adjacent = false;
+            if ((territory == argentina && (source == brazil || source == peru)) ||
+                (territory == peru && (source == brazil || source == argentina || source == venezuela)) ||
+                (territory == venezuela && (source == brazil || source == peru || source == centralAmerica)) ||
+                (territory == brazil && (source == northAfrica || source == argentina || source == venezuela)) ||
+                (territory == centralAmerica && (source == venezuela || source == easternUnitedStates || source == westernUnitedStates)) ||
+                (territory == easternUnitedStates && (source == westernUnitedStates || source == centralAmerica || source == alberta || source == ontario)) ||
+                (territory == westernUnitedStates && (source == centralAmerica || source == easternUnitedStates || source == quebec || source == ontario)) ||
+                (territory == quebec && (source == ontario || source == greenLand || source == easternUnitedStates)) ||
+                (territory == ontario && (source == quebec || source == easternUnitedStates || source == westernUnitedStates || source == alberta || source == northWestTerritory || source == alaska || source == greenLand)) ||
+                (territory == alberta && (source == ontario || source == northWestTerritory || source == alaska || source == westernUnitedStates)) ||
+                (territory == alaska && (source == northWestTerritory || source == alberta || source == kamchatka)) ||
+                (territory == northWestTerritory && (source == alaska || source == alberta || source == ontario || source == greenLand)) ||
+                (territory == greenLand && (source == quebec || source == ontario || source == northWestTerritory || source == iceland)) ||
+                (territory == iceland && (source == scandinavia || source == greatBritain || source == greenLand)) ||
+                (territory == scandinavia && (source == iceland || source == greatBritain || source == ukraine || source == northernEurope)) ||
+                (territory == greatBritain && (source == northernEurope || source == westernEurope || source == scandinavia || source == iceland)) ||
+                (territory == westernEurope && (source == northAfrica || source == northernEurope || source == greatBritain || source == southernEurope)) ||
+                (territory == southernEurope && (source == westernEurope || source == northAfrica || source == egypt || source == ukraine || source == middleEast || source == northernEurope)) ||
+                (territory == northernEurope && (source == southernEurope || source == westernEurope || source == greatBritain || source == scandinavia || source == ukraine)) ||
+                (territory == ukraine && (source == scandinavia || source == northernEurope || source == southernEurope || source == middleEast || source == afghanistan || source == ural)) ||
+                (territory == northAfrica && (source == egypt || source == eastAfrica || source == congo || source == brazil || source == southernEurope || source == westernEurope)) ||
+                (territory == egypt && (source == northAfrica || source == southernEurope || source == middleEast || source == eastAfrica)) ||
+                (territory == eastAfrica && (source == northAfrica || source == middleEast || source == egypt || source == congo || source == southAfrica || source == madagascar)) ||
+                (territory == congo && (source == northAfrica || source == southAfrica || source == eastAfrica)) ||
+                (territory == southAfrica && (source == congo || source == eastAfrica || source == madagascar)) ||
+                (territory == madagascar && (source == southAfrica || source == eastAfrica)) ||
+                (territory == easternAustralia && (source == westernAustralia || source == newGuinea)) ||
+                (territory == westernAustralia && (source == easternAustralia || source == newGuinea)) ||
+                (territory == newGuinea && (source == westernAustralia || source == indonesia || source == easternAustralia)) ||
+                (territory == indonesia && (source == newGuinea || source == siam)) ||
+                (territory == siam && (source == india || source == china || source == indonesia)) ||
+                (territory == india && (source == siam || source == china || source == middleEast || source == afghanistan)) ||
+                (territory == middleEast && (source == eastAfrica || source == northAfrica || source == southernEurope || source == ukraine || source == afghanistan || source == india)) ||
+                (territory == afghanistan && (source == ukraine || source == middleEast || source == india || source == china || source == ural)) ||
+                (territory == china && (source == siberia || source == ural || source == afghanistan || source == india || source == siam || source == mongolia)) ||
+                (territory == ural && (source == ukraine || source == afghanistan || source == china || source == siberia)) ||
+                (territory == siberia && (source == ural || source == china || source == mongolia || source == irkutsk || source == yakutsk)) ||
+                (territory == mongolia && (source == japan || source == china || source == siberia || source == irkutsk || source == kamchatka)) ||
+                (territory == irkutsk && (source == siberia || source == mongolia || source == kamchatka || source == yakutsk)) ||
+                (territory == yakutsk && (source == irkutsk || source == siberia || source == kamchatka)) ||
+                (territory == japan && (source == kamchatka || source == mongolia || source == venezuela)) ||
+                (territory == kamchatka && (source == alaska || source == irkutsk || source == yakutsk || source == mongolia || source == japan))
                 )
             {
-                defendingTerritory = territory;
-                turnPhase = 6;
-                runGame();
+                adjacent = true;
             }
+            return adjacent;
         }
         private void finishAttacking(bool win)
         {
