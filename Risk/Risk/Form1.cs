@@ -110,6 +110,7 @@ namespace Risk
         private void checkifTransferrable(object sender)
         {
             object territory = sender;
+            object source;
             object[] territoryArray = new object[42] {
                 argentina, brazil, venezuela, peru,
                 centralAmerica, westernUnitedStates, easternUnitedStates, alberta, ontario, quebec, greenLand, northWestTerritory, alaska,
@@ -119,20 +120,32 @@ namespace Risk
                 indonesia, newGuinea, easternAustralia, westernAustralia
             };
             bool[] pathTracker = new bool[42];
-            int counter = 0;
-            while (counter < territoryArray.Length)
+            object[] activeTerritories = new object[1] { sender };
+            int Fullrepetitions = 0;
+            while (Fullrepetitions <= 42 && activeTerritories.Length != 0)
             {
-                object source = territoryArray[counter];
-                source = territoryArray;
-                if (CheckIfAdjacent(territory, source) == true)
+                int halfRepetitions = 0;
+                while (halfRepetitions <= activeTerritories.Length)
                 {
 
-                }
-                else
-                {
 
+                    int counter = 0;
+                    while (counter < territoryArray.Length)
+                    {
+                        source = territoryArray[counter];
+                        if (CheckIfAdjacent(territory, source) == true && color[senderdecryption(source)] == turnColor)
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+                        counter++;
+                    }
+                    halfRepetitions++;
                 }
-                counter++;
+                Fullrepetitions++;
             }
 
             defendingTerritory = sender;
