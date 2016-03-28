@@ -51,3 +51,6 @@ C:\Users\Liam Multhaup\Downloads\Hopefully Works\Risk\obj\Debug\Risk.Properties.
 C:\Users\Liam Multhaup\Downloads\Hopefully Works\Risk\obj\Debug\Risk.csproj.GenerateResource.Cache
 F:\Risk\Risk\obj\Debug\Risk.ProjectMenu.resources
 E:\Risk\Risk\obj\Debug\Risk.ProjectMenu.resources
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\bin\Debug\Risk.exe.config
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.exe
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.pdb
