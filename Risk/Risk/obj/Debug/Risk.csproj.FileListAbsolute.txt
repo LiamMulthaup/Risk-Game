@@ -54,3 +54,10 @@ E:\Risk\Risk\obj\Debug\Risk.ProjectMenu.resources
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\bin\Debug\Risk.exe.config
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.exe
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.pdb
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\bin\Debug\Risk.exe
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\bin\Debug\Risk.pdb
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.csprojResolveAssemblyReference.cache
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.RiskBoard.resources
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.ProjectMenu.resources
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.Properties.Resources.resources
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.csproj.GenerateResource.Cache
