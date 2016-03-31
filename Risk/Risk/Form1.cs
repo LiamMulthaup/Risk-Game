@@ -569,14 +569,12 @@ namespace Risk
             if (turnPhase == 5)
             {
                 turnPhase = 4;
-                attackingTerritory = "";
                 deffendingTerritoryText.Text = "";
                 attackingTerritoryText.Text = "(choose)";
             }
             if (turnPhase == 6)
             {
                 turnPhase = 5;
-                defendingTerritory = "";
                 attackingArmiesText.Text = "";
                 armiesTrackBar.Visible = false;
                 runGame();
@@ -1289,7 +1287,6 @@ namespace Risk
             {
                 turnPhase = 9;
                 receivingTerritoryText.Text = "";
-                attackingTerritory = "";
                 runGame();
             }
             if (turnPhase == 11)

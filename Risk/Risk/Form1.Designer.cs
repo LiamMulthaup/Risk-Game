@@ -1902,10 +1902,10 @@
             this.Controls.Add(this.peru);
             this.Controls.Add(this.brazil);
             this.Controls.Add(this.argentina);
-            this.Controls.Add(this.transferBox);
-            this.Controls.Add(this.choosingBox);
             this.Controls.Add(this.attackingBox);
             this.Controls.Add(this.deployBox);
+            this.Controls.Add(this.transferBox);
+            this.Controls.Add(this.choosingBox);
             this.MaximizeBox = false;
             this.Name = "RiskBoard";
             this.Text = "Risk";
