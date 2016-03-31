@@ -119,38 +119,61 @@ namespace Risk
                 middleEast, afghanistan, india, siam, china, ural, siberia, mongolia, japan, irkutsk, yakutsk, kamchatka,
                 indonesia, newGuinea, easternAustralia, westernAustralia
             };
-            bool[] pathTracker = new bool[42];
-            object[] activeTerritories = new object[1] { sender };
-            int Fullrepetitions = 0;
-            while (Fullrepetitions <= 42 && activeTerritories.Length != 0)
+            bool[] pathTracker = new bool[42] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+            int[] activeTerritories = new int[1];
+            List<int> newactiveTerritories = new List<int>();
+            bool repeatedonce = false;
+            bool finish = false;
+            while (finish == false)
             {
                 int halfRepetitions = 0;
-                while (halfRepetitions <= activeTerritories.Length)
+                while (halfRepetitions < activeTerritories.Length)
                 {
-
+                    if (repeatedonce == true)
+                    {
+                        territory = territoryArray[activeTerritories[halfRepetitions]];
+                    }
 
                     int counter = 0;
                     while (counter < territoryArray.Length)
                     {
                         source = territoryArray[counter];
-                        if (CheckIfAdjacent(territory, source) == true && color[senderdecryption(source)] == turnColor)
+                        if (CheckIfAdjacent(territory, source) == true && color[senderdecryption(source)] == turnColor && pathTracker[counter] == false)
                         {
-
-                        }
-                        else
-                        {
-
+                            repeatedonce = true;
+                            newactiveTerritories.Add(counter);
+                            pathTracker[counter] = true;
+                            if (source == sender)
+                            {
+                                newactiveTerritories.Clear();
+                                counter = territoryArray.Length;
+                                halfRepetitions = activeTerritories.Length;
+                                defendingTerritory = sender;
+                                turnPhase = 11;
+                                runGame();
+                            }
                         }
                         counter++;
                     }
                     halfRepetitions++;
                 }
-                Fullrepetitions++;
+                if (newactiveTerritories.Count == 0)
+                {
+                    finish = true;
+                }
+                else
+                {
+                    activeTerritories = new int[newactiveTerritories.Count];
+                    int x = 0;
+                    while (x < activeTerritories.Length)
+                    {
+                        activeTerritories[x] = newactiveTerritories[x];
+                        x++;
+                    }
+                }
             }
 
-            defendingTerritory = sender;
-            turnPhase = 11;
-            runGame();
+            
         }
 
         private string findTerritoryStringName(object sender)
