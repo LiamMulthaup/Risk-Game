@@ -40,7 +40,7 @@ namespace Risk
         int attackingtimCounter = 0;
         int originalTransferringValue;
         bool winner = false;
-        string[] playerCards = new string[30];
+        int[][] playerCards;
         public RiskBoard()
         {
             InitializeComponent();
@@ -1333,6 +1333,42 @@ namespace Risk
             }
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CardPic2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CardPic3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CardPic4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CardPic5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void initialdeployTroops()
         {
             turnPhase = 1;

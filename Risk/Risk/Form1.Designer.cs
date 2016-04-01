@@ -98,11 +98,11 @@
             this.choosingBox = new System.Windows.Forms.GroupBox();
             this.randomLabel5 = new System.Windows.Forms.Label();
             this.newTurnBox = new System.Windows.Forms.GroupBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CardPic5 = new System.Windows.Forms.PictureBox();
+            this.CardPic4 = new System.Windows.Forms.PictureBox();
+            this.CardPic2 = new System.Windows.Forms.PictureBox();
+            this.CardPic3 = new System.Windows.Forms.PictureBox();
+            this.CardPic1 = new System.Windows.Forms.PictureBox();
             this.useCardButton = new System.Windows.Forms.Button();
             this.beginTurnButton = new System.Windows.Forms.Button();
             this.beginGameGroup = new System.Windows.Forms.GroupBox();
@@ -174,16 +174,18 @@
             this.winTransferDoneButton = new System.Windows.Forms.Button();
             this.winTransferAmount = new System.Windows.Forms.Label();
             this.randomLabel25 = new System.Windows.Forms.Label();
+            this.cardRightPageTurnButton = new System.Windows.Forms.Button();
+            this.cardLeftPageTurnButton = new System.Windows.Forms.Button();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
             this.choosingBox.SuspendLayout();
             this.newTurnBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic1)).BeginInit();
             this.beginGameGroup.SuspendLayout();
             this.attackingAlert.SuspendLayout();
             this.deployAlert.SuspendLayout();
@@ -957,15 +959,17 @@
             // 
             // newTurnBox
             // 
-            this.newTurnBox.Controls.Add(this.pictureBox5);
-            this.newTurnBox.Controls.Add(this.pictureBox4);
-            this.newTurnBox.Controls.Add(this.pictureBox3);
-            this.newTurnBox.Controls.Add(this.pictureBox2);
-            this.newTurnBox.Controls.Add(this.pictureBox1);
+            this.newTurnBox.Controls.Add(this.cardLeftPageTurnButton);
+            this.newTurnBox.Controls.Add(this.cardRightPageTurnButton);
+            this.newTurnBox.Controls.Add(this.CardPic5);
+            this.newTurnBox.Controls.Add(this.CardPic4);
+            this.newTurnBox.Controls.Add(this.CardPic2);
+            this.newTurnBox.Controls.Add(this.CardPic3);
+            this.newTurnBox.Controls.Add(this.CardPic1);
             this.newTurnBox.Controls.Add(this.useCardButton);
             this.newTurnBox.Controls.Add(this.beginTurnButton);
             this.newTurnBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.newTurnBox.Location = new System.Drawing.Point(742, 216);
+            this.newTurnBox.Location = new System.Drawing.Point(282, 170);
             this.newTurnBox.Name = "newTurnBox";
             this.newTurnBox.Size = new System.Drawing.Size(300, 131);
             this.newTurnBox.TabIndex = 54;
@@ -973,50 +977,55 @@
             this.newTurnBox.Text = "Begin Turn: Player";
             this.newTurnBox.Visible = false;
             // 
-            // pictureBox5
+            // CardPic5
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(238, 24);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(49, 58);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 59;
-            this.pictureBox5.TabStop = false;
+            this.CardPic5.Location = new System.Drawing.Point(238, 24);
+            this.CardPic5.Name = "CardPic5";
+            this.CardPic5.Size = new System.Drawing.Size(49, 58);
+            this.CardPic5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CardPic5.TabIndex = 59;
+            this.CardPic5.TabStop = false;
+            this.CardPic5.Click += new System.EventHandler(this.CardPic5_Click);
             // 
-            // pictureBox4
+            // CardPic4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(183, 24);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(49, 58);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 58;
-            this.pictureBox4.TabStop = false;
+            this.CardPic4.Location = new System.Drawing.Point(183, 24);
+            this.CardPic4.Name = "CardPic4";
+            this.CardPic4.Size = new System.Drawing.Size(49, 58);
+            this.CardPic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CardPic4.TabIndex = 58;
+            this.CardPic4.TabStop = false;
+            this.CardPic4.Click += new System.EventHandler(this.CardPic4_Click);
             // 
-            // pictureBox3
+            // CardPic2
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(73, 24);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(49, 58);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 57;
-            this.pictureBox3.TabStop = false;
+            this.CardPic2.Location = new System.Drawing.Point(73, 24);
+            this.CardPic2.Name = "CardPic2";
+            this.CardPic2.Size = new System.Drawing.Size(49, 58);
+            this.CardPic2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CardPic2.TabIndex = 57;
+            this.CardPic2.TabStop = false;
+            this.CardPic2.Click += new System.EventHandler(this.CardPic2_Click);
             // 
-            // pictureBox2
+            // CardPic3
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(128, 24);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(49, 58);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 56;
-            this.pictureBox2.TabStop = false;
+            this.CardPic3.Location = new System.Drawing.Point(128, 24);
+            this.CardPic3.Name = "CardPic3";
+            this.CardPic3.Size = new System.Drawing.Size(49, 58);
+            this.CardPic3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CardPic3.TabIndex = 56;
+            this.CardPic3.TabStop = false;
+            this.CardPic3.Click += new System.EventHandler(this.CardPic3_Click);
             // 
-            // pictureBox1
+            // CardPic1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(18, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(49, 58);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 55;
-            this.pictureBox1.TabStop = false;
+            this.CardPic1.Location = new System.Drawing.Point(18, 24);
+            this.CardPic1.Name = "CardPic1";
+            this.CardPic1.Size = new System.Drawing.Size(49, 58);
+            this.CardPic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CardPic1.TabIndex = 55;
+            this.CardPic1.TabStop = false;
+            this.CardPic1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // useCardButton
             // 
@@ -1844,6 +1853,28 @@
             this.randomLabel25.TabIndex = 61;
             this.randomLabel25.Text = "Transfer              Armies";
             // 
+            // cardRightPageTurnButton
+            // 
+            this.cardRightPageTurnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cardRightPageTurnButton.Location = new System.Drawing.Point(259, 92);
+            this.cardRightPageTurnButton.Name = "cardRightPageTurnButton";
+            this.cardRightPageTurnButton.Size = new System.Drawing.Size(35, 23);
+            this.cardRightPageTurnButton.TabIndex = 63;
+            this.cardRightPageTurnButton.Text = ">>";
+            this.cardRightPageTurnButton.UseVisualStyleBackColor = true;
+            this.cardRightPageTurnButton.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // cardLeftPageTurnButton
+            // 
+            this.cardLeftPageTurnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cardLeftPageTurnButton.Location = new System.Drawing.Point(9, 92);
+            this.cardLeftPageTurnButton.Name = "cardLeftPageTurnButton";
+            this.cardLeftPageTurnButton.Size = new System.Drawing.Size(35, 23);
+            this.cardLeftPageTurnButton.TabIndex = 64;
+            this.cardLeftPageTurnButton.Text = "<<";
+            this.cardLeftPageTurnButton.UseVisualStyleBackColor = true;
+            this.cardLeftPageTurnButton.Click += new System.EventHandler(this.button4_Click);
+            // 
             // RiskBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1918,11 +1949,11 @@
             this.transferBox.PerformLayout();
             this.choosingBox.ResumeLayout(false);
             this.newTurnBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CardPic1)).EndInit();
             this.beginGameGroup.ResumeLayout(false);
             this.beginGameGroup.PerformLayout();
             this.attackingAlert.ResumeLayout(false);
@@ -2007,11 +2038,11 @@
         private System.Windows.Forms.Label randomLabel18;
         private System.Windows.Forms.Label randomLabel19;
         private System.Windows.Forms.GroupBox newTurnBox;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox CardPic5;
+        private System.Windows.Forms.PictureBox CardPic4;
+        private System.Windows.Forms.PictureBox CardPic2;
+        private System.Windows.Forms.PictureBox CardPic3;
+        private System.Windows.Forms.PictureBox CardPic1;
         private System.Windows.Forms.Button useCardButton;
         private System.Windows.Forms.Button beginTurnButton;
         private System.Windows.Forms.GroupBox choosingBox;
@@ -2087,6 +2118,8 @@
         private System.Windows.Forms.Label randomLabel25;
         private System.Windows.Forms.Label winTransferAmount;
         private System.Windows.Forms.Button winTransferDoneButton;
+        private System.Windows.Forms.Button cardLeftPageTurnButton;
+        private System.Windows.Forms.Button cardRightPageTurnButton;
     }
 }
 
