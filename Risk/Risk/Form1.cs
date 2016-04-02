@@ -1400,6 +1400,17 @@ namespace Risk
             armiesUsed++;
             troopsDeployedText.Text = "(" + armiesUsed + "/" + armiesTotal + ")";
         }
+
+        {
+            int x = 0;
+            {
+                if (playerCards[turn].Length > x)
+                {
+
+                }
+                x++;
+            }
+        }
         private void runGame()// This is a sort of hub for the actual running of the game, methods return here if they are transitioning a phase.
         {
             if (turnPhase == 2)
@@ -1409,6 +1420,7 @@ namespace Risk
                 newTurnBox.Visible = true;
                 newTurnBox.Location = new Point(268, 199);
                 newTurnBox.Text = "Begin Turn: " + turnName;
+                showCards();
             }
             if (turnPhase == 3)
             {
