@@ -1401,8 +1401,10 @@ namespace Risk
             troopsDeployedText.Text = "(" + armiesUsed + "/" + armiesTotal + ")";
         }
 
+        private void showCards(int page)//takes card data and uses it to display them on the newTurnBox.
         {
             int x = 0;
+            while (x < page * 5)
             {
                 if (playerCards[turn].Length > x)
                 {
