@@ -41,6 +41,7 @@ namespace Risk
         int originalTransferringValue;
         bool winner = false;
         int[][] playerCards;
+        int page;
         public RiskBoard()
         {
             InitializeComponent();
@@ -1369,7 +1370,7 @@ namespace Risk
 
         }
 
-        private void initialdeployTroops()
+        private void initialdeployTroops()//A method that controls the transitions between players during the beginning game setup.
         {
             turnPhase = 1;
             choosingBox.Visible = true;
@@ -1384,14 +1385,14 @@ namespace Risk
             }
             else
             {
-                if (turn == players)
+                if (turn == players)//If all the players have gone through their turn, perform the following actions.
                 {
-                    armiesUsed++;
-                    turn = 1;
+                    armiesUsed++;//Add one to the armies used.
+                    turn = 1;//Reset turn.
                 }
                 else
                 {
-                    turn++;
+                    turn++;//Go to next turn.
                 }
             }
         }
@@ -1401,16 +1402,44 @@ namespace Risk
             troopsDeployedText.Text = "(" + armiesUsed + "/" + armiesTotal + ")";
         }
 
-        private void showCards(int page)//takes card data and uses it to display them on the newTurnBox.
+        private void showCards()//takes card data and uses it to display them on the newTurnBox.
         {
-            int x = 0;
+            int x = (page * 5) - 4;
             while (x < page * 5)
             {
                 if (playerCards[turn].Length > x)
                 {
-
+                    int y = x - (page * 5);
+                    if (y == 1) { CheckCardType(x, CardPic1); }
+                    if (y == 2) { CheckCardType(x, CardPic2); }
+                    if (y == 3) { CheckCardType(x, CardPic3); }
+                    if (y == 4) { CheckCardType(x, CardPic4); }
+                    if (y == 5) { CheckCardType(x, CardPic5); }
                 }
                 x++;
+            }
+        }
+        private void CheckCardType(int x, PictureBox pic)
+        {
+            if (playerCards[turn][x] == 1)
+            {
+
+            }
+            if (playerCards[turn][x] == 1)
+            {
+
+            }
+            if (playerCards[turn][x] == 1)
+            {
+
+            }
+            if (playerCards[turn][x] == 1)
+            {
+
+            }
+            if (playerCards[turn][x] == 1)
+            {
+
             }
         }
         private void runGame()// This is a sort of hub for the actual running of the game, methods return here if they are transitioning a phase.
