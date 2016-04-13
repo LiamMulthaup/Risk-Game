@@ -354,6 +354,8 @@ namespace Risk
         private void Form1_Load(object sender, EventArgs e)
         {
             beginGameGroup.Location = new Point(120, 66);
+            playerCards[1] =  new int[] { 1, 2, 3, 2, 1 };
+            playerCards[2] = new int[] { 1, 2, 3, 2, 2 };
         }
 
         private void label16_Click(object sender, EventArgs e)
@@ -1337,7 +1339,7 @@ namespace Risk
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void CardPic2_Click(object sender, EventArgs e)
@@ -1407,14 +1409,21 @@ namespace Risk
             int x = (page * 5) - 4;
             while (x < page * 5)
             {
-                if (playerCards[turn].Length > x)
+                try
                 {
-                    int y = x - (page * 5);
-                    if (y == 1) { CheckCardType(x, CardPic1); }
-                    if (y == 2) { CheckCardType(x, CardPic2); }
-                    if (y == 3) { CheckCardType(x, CardPic3); }
-                    if (y == 4) { CheckCardType(x, CardPic4); }
-                    if (y == 5) { CheckCardType(x, CardPic5); }
+                    if (playerCards[turn].Length > x)
+                    {
+                        int y = x - (page * 5);
+                        if (y == 1) { CheckCardType(x, CardPic1); }
+                        if (y == 2) { CheckCardType(x, CardPic2); }
+                        if (y == 3) { CheckCardType(x, CardPic3); }
+                        if (y == 4) { CheckCardType(x, CardPic4); }
+                        if (y == 5) { CheckCardType(x, CardPic5); }
+                    }
+                }
+                catch
+                {
+
                 }
                 x++;
             }
@@ -1423,23 +1432,15 @@ namespace Risk
         {
             if (playerCards[turn][x] == 1)
             {
-
+                pic.Image = Properties.Resources.King_Spades;
             }
-            if (playerCards[turn][x] == 1)
+            if (playerCards[turn][x] == 2)
             {
-
+                pic.Image = Properties.Resources.Queen_Spades;
             }
-            if (playerCards[turn][x] == 1)
+            if (playerCards[turn][x] == 3)
             {
-
-            }
-            if (playerCards[turn][x] == 1)
-            {
-
-            }
-            if (playerCards[turn][x] == 1)
-            {
-
+                pic.Image = Properties.Resources.Jack_Spades__1_;
             }
         }
         private void runGame()// This is a sort of hub for the actual running of the game, methods return here if they are transitioning a phase.
