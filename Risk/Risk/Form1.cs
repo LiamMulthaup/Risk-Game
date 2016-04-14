@@ -40,7 +40,7 @@ namespace Risk
         int attackingtimCounter = 0;
         int originalTransferringValue;
         bool winner = false;
-        int[][] playerCards;
+        int[][] playerCards = new int[6][];
         int page;
         public RiskBoard()
         {
@@ -1126,7 +1126,15 @@ namespace Risk
         }
         private void getCards()
         {
-            if (color1 == turnColor) {  }
+            Random rand = new Random();
+            try
+            {
+                playerCards[turn][playerCards.Length] = rand.Next(3) + 1;
+            }
+            catch
+            {
+                playerCards[turn][0] = rand.Next(3) + 1;
+            }
         }
         private void getLosersCards(int playerOrderNumber)
         {
@@ -1364,12 +1372,14 @@ namespace Risk
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            page--;
+            showCards();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-
+            page++;
+            showCards();
         }
 
         private void initialdeployTroops()//A method that controls the transitions between players during the beginning game setup.
@@ -1406,41 +1416,66 @@ namespace Risk
 
         private void showCards()//takes card data and uses it to display them on the newTurnBox.
         {
-            int x = (page * 5) - 4;
-            while (x < page * 5)
+            CardPic1.Visible = false;
+            CardPic2.Visible = false;
+            CardPic3.Visible = false;
+            CardPic4.Visible = false;
+            CardPic5.Visible = false;
+            try
             {
-                try
+                int x = (page - 1) * 5;
+                while (x < page * 5)
                 {
                     if (playerCards[turn].Length > x)
                     {
-                        int y = x - (page * 5);
-                        if (y == 1) { CheckCardType(x, CardPic1); }
-                        if (y == 2) { CheckCardType(x, CardPic2); }
-                        if (y == 3) { CheckCardType(x, CardPic3); }
-                        if (y == 4) { CheckCardType(x, CardPic4); }
-                        if (y == 5) { CheckCardType(x, CardPic5); }
+                        int y = x - ((page - 1) * 5);
+                        if (y == 0) { CheckCardType(x, CardPic1); }
+                        if (y == 1) { CheckCardType(x, CardPic2); }
+                        if (y == 2) { CheckCardType(x, CardPic3); }
+                        if (y == 3) { CheckCardType(x, CardPic4); }
+                        if (y == 4) { CheckCardType(x, CardPic5); }
                     }
+                    x++;
                 }
-                catch
+                if (playerCards[turn].Length > page * 5)
                 {
-
+                    cardRightPageTurnButton.Visible = true;
                 }
-                x++;
+                else
+                {
+                    cardRightPageTurnButton.Visible = false;
+                }
+                if (page > 1)
+                {
+                    cardLeftPageTurnButton.Visible = true;
+                }
+                else
+                {
+                    cardLeftPageTurnButton.Visible = false;
+                }
+            }
+            catch
+            {
+
             }
         }
         private void CheckCardType(int x, PictureBox pic)
         {
+            pic.Visible = true;
             if (playerCards[turn][x] == 1)
             {
                 pic.Image = Properties.Resources.King_Spades;
+                pic.Refresh();
             }
             if (playerCards[turn][x] == 2)
             {
                 pic.Image = Properties.Resources.Queen_Spades;
+                pic.Refresh();
             }
             if (playerCards[turn][x] == 3)
             {
                 pic.Image = Properties.Resources.Jack_Spades__1_;
+                pic.Refresh();
             }
         }
         private void runGame()// This is a sort of hub for the actual running of the game, methods return here if they are transitioning a phase.
@@ -1452,6 +1487,7 @@ namespace Risk
                 newTurnBox.Visible = true;
                 newTurnBox.Location = new Point(268, 199);
                 newTurnBox.Text = "Begin Turn: " + turnName;
+                page = 1;
                 showCards();
             }
             if (turnPhase == 3)
