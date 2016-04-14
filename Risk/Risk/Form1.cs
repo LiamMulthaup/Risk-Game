@@ -354,8 +354,8 @@ namespace Risk
         private void Form1_Load(object sender, EventArgs e)
         {
             beginGameGroup.Location = new Point(120, 66);
-            playerCards[1] =  new int[] { 1, 2, 3, 2, 1 };
-            playerCards[2] = new int[] { 1, 2, 3, 2, 2 };
+            //playerCards[1] =  new int[] { 1, 2, 3, 2, 1 };
+            //playerCards[2] = new int[] { 1, 2, 3, 2, 2 };
         }
 
         private void label16_Click(object sender, EventArgs e)
@@ -772,6 +772,7 @@ namespace Risk
         private void commandButton_Click(object sender, EventArgs e)
         {
             if (commandText.Text == "phase 2 please") { armiesUsed = 0; armiesTotal = 0; initialdeployTroops(); }
+            if (commandText.Text == "gimme cards") { getCards(); }
             commandCenterGroup.Visible = false;
         }
 
@@ -1126,15 +1127,32 @@ namespace Risk
         }
         private void getCards()
         {
-            Random rand = new Random();
+            int SIZE;
+            int[] playerCardsSaved;
             try
             {
-                playerCards[turn][playerCards.Length] = rand.Next(3) + 1;
+                SIZE = playerCards[turn].Length;
+                playerCardsSaved = new int[SIZE];
+                for (int x = 0; x < SIZE; x++)
+                {
+                    playerCardsSaved[x] = playerCards[turn][x];
+                }
+                playerCards[turn] = new int[SIZE + 1];
+                for (int x = 0; x < SIZE; x++)
+                {
+                    playerCards[turn][x] = playerCardsSaved[x];
+                }
+                Random rand = new Random();
+                playerCards[turn][SIZE] = rand.Next(3) + 1;
             }
             catch
             {
-                playerCards[turn][0] = rand.Next(3) + 1;
+                SIZE = 0;
+                playerCards[turn] = new int[SIZE + 1];
+                Random rand = new Random();
+                playerCards[turn][SIZE] = rand.Next(3) + 1;
             }
+            
         }
         private void getLosersCards(int playerOrderNumber)
         {
