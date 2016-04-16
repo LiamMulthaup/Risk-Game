@@ -40,9 +40,10 @@ namespace Risk
         int attackingtimCounter = 0;
         int originalTransferringValue;
         bool winner = false;
-        int[][] playerCards = new int[6][];
+        int[][] playerCards = new int[7][];
         int page;
         int playerNumber;
+        List<int> selectedPlayerCards = new List<int>();
         public RiskBoard()
         {
             InitializeComponent();
@@ -355,8 +356,8 @@ namespace Risk
         private void Form1_Load(object sender, EventArgs e)
         {
             beginGameGroup.Location = new Point(120, 66);
-            //playerCards[1] =  new int[] { 1, 2, 3, 2, 1 };
-            //playerCards[2] = new int[] { 1, 2, 3, 2, 2 };
+            playerCards[1] =  new int[] { 1, 2, 3, 2, 1, 2, 2, 3, 1, 2, 3 };
+            playerCards[2] = new int[] { 1, 2, 3, 2, 2, 1, 2, 3, 1 };
         }
 
         private void label16_Click(object sender, EventArgs e)
@@ -976,6 +977,7 @@ namespace Risk
             armiesTotal = 0;
             armiesUsed = 0;
             newTurnBox.Visible = false;
+            selectedPlayerCards.Clear();
             runGame();
         }
 
@@ -1372,39 +1374,41 @@ namespace Risk
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            cardClick(sender);
+            cardClick(sender, 0);
         }
 
         private void CardPic2_Click(object sender, EventArgs e)
         {
-            cardClick(sender);
+            cardClick(sender, 1);
         }
 
         private void CardPic3_Click(object sender, EventArgs e)
         {
-            cardClick(sender);
+            cardClick(sender, 2);
         }
 
         private void CardPic4_Click(object sender, EventArgs e)
         {
-            cardClick(sender);
+            cardClick(sender, 3);
         }
 
         private void CardPic5_Click(object sender, EventArgs e)
         {
-            cardClick(sender);
+            cardClick(sender, 4);
         }
 
-        private void cardClick(object sender)
+        private void cardClick(object sender, int id)
         {
             PictureBox pic = sender as PictureBox;
             if (pic.BorderStyle == BorderStyle.None)
             {
                 pic.BorderStyle = BorderStyle.FixedSingle;
+                selectedPlayerCards.Add(id + ((page - 1) * 5));
             }
             else
             {
                 pic.BorderStyle = BorderStyle.None;
+                selectedPlayerCards.Remove(id + ((page - 1) * 5));
             }
         }
 
@@ -1514,6 +1518,15 @@ namespace Risk
             {
                 pic.Image = Properties.Resources.Jack_Spades__1_;
                 pic.Refresh();
+            }
+
+            if (selectedPlayerCards.IndexOf(x) != -1)
+            {
+                pic.BorderStyle = BorderStyle.FixedSingle;
+            }
+            else
+            {
+                pic.BorderStyle = BorderStyle.None;
             }
         }
         private void runGame()// This is a sort of hub for the actual running of the game, methods return here if they are transitioning a phase.
