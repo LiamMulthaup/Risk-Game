@@ -1360,32 +1360,45 @@ namespace Risk
                 turnColor = color6;
                 turnName = player6Name;
             }
-
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
+            cardClick(sender);
         }
 
         private void CardPic2_Click(object sender, EventArgs e)
         {
-
+            cardClick(sender);
         }
 
         private void CardPic3_Click(object sender, EventArgs e)
         {
-
+            cardClick(sender);
         }
 
         private void CardPic4_Click(object sender, EventArgs e)
         {
-
+            cardClick(sender);
         }
 
         private void CardPic5_Click(object sender, EventArgs e)
         {
+            cardClick(sender);
+        }
 
+        private void cardClick(object sender)
+        {
+            PictureBox pic = sender as PictureBox;
+            if (pic.BorderStyle == BorderStyle.None)
+            {
+                pic.BorderStyle = BorderStyle.FixedSingle;
+            }
+            else
+            {
+                pic.BorderStyle = BorderStyle.None;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
