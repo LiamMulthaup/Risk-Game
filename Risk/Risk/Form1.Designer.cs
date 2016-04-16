@@ -98,6 +98,8 @@
             this.choosingBox = new System.Windows.Forms.GroupBox();
             this.randomLabel5 = new System.Windows.Forms.Label();
             this.newTurnBox = new System.Windows.Forms.GroupBox();
+            this.cardLeftPageTurnButton = new System.Windows.Forms.Button();
+            this.cardRightPageTurnButton = new System.Windows.Forms.Button();
             this.CardPic5 = new System.Windows.Forms.PictureBox();
             this.CardPic4 = new System.Windows.Forms.PictureBox();
             this.CardPic2 = new System.Windows.Forms.PictureBox();
@@ -174,8 +176,6 @@
             this.winTransferDoneButton = new System.Windows.Forms.Button();
             this.winTransferAmount = new System.Windows.Forms.Label();
             this.randomLabel25 = new System.Windows.Forms.Label();
-            this.cardRightPageTurnButton = new System.Windows.Forms.Button();
-            this.cardLeftPageTurnButton = new System.Windows.Forms.Button();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -977,6 +977,28 @@
             this.newTurnBox.Text = "Begin Turn: Player";
             this.newTurnBox.Visible = false;
             // 
+            // cardLeftPageTurnButton
+            // 
+            this.cardLeftPageTurnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cardLeftPageTurnButton.Location = new System.Drawing.Point(9, 92);
+            this.cardLeftPageTurnButton.Name = "cardLeftPageTurnButton";
+            this.cardLeftPageTurnButton.Size = new System.Drawing.Size(35, 23);
+            this.cardLeftPageTurnButton.TabIndex = 64;
+            this.cardLeftPageTurnButton.Text = "<<";
+            this.cardLeftPageTurnButton.UseVisualStyleBackColor = true;
+            this.cardLeftPageTurnButton.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // cardRightPageTurnButton
+            // 
+            this.cardRightPageTurnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cardRightPageTurnButton.Location = new System.Drawing.Point(259, 92);
+            this.cardRightPageTurnButton.Name = "cardRightPageTurnButton";
+            this.cardRightPageTurnButton.Size = new System.Drawing.Size(35, 23);
+            this.cardRightPageTurnButton.TabIndex = 63;
+            this.cardRightPageTurnButton.Text = ">>";
+            this.cardRightPageTurnButton.UseVisualStyleBackColor = true;
+            this.cardRightPageTurnButton.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // CardPic5
             // 
             this.CardPic5.Location = new System.Drawing.Point(238, 24);
@@ -1085,7 +1107,7 @@
             this.beginGameGroup.Controls.Add(this.beginGameButton);
             this.beginGameGroup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.beginGameGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginGameGroup.Location = new System.Drawing.Point(770, 508);
+            this.beginGameGroup.Location = new System.Drawing.Point(756, 510);
             this.beginGameGroup.Name = "beginGameGroup";
             this.beginGameGroup.Size = new System.Drawing.Size(569, 400);
             this.beginGameGroup.TabIndex = 55;
@@ -1527,7 +1549,7 @@
             // 
             this.commandCenterGroup.Controls.Add(this.commandButton);
             this.commandCenterGroup.Controls.Add(this.commandText);
-            this.commandCenterGroup.Location = new System.Drawing.Point(530, 508);
+            this.commandCenterGroup.Location = new System.Drawing.Point(550, 510);
             this.commandCenterGroup.Name = "commandCenterGroup";
             this.commandCenterGroup.Size = new System.Drawing.Size(200, 100);
             this.commandCenterGroup.TabIndex = 32;
@@ -1599,7 +1621,7 @@
             this.diceBox.Controls.Add(this.attackingTerritoryLabel);
             this.diceBox.Controls.Add(this.randomLabel21);
             this.diceBox.Controls.Add(this.randomLabel20);
-            this.diceBox.Location = new System.Drawing.Point(74, 510);
+            this.diceBox.Location = new System.Drawing.Point(66, 510);
             this.diceBox.Name = "diceBox";
             this.diceBox.Size = new System.Drawing.Size(443, 288);
             this.diceBox.TabIndex = 59;
@@ -1852,28 +1874,6 @@
             this.randomLabel25.Size = new System.Drawing.Size(132, 15);
             this.randomLabel25.TabIndex = 61;
             this.randomLabel25.Text = "Transfer              Armies";
-            // 
-            // cardRightPageTurnButton
-            // 
-            this.cardRightPageTurnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cardRightPageTurnButton.Location = new System.Drawing.Point(259, 92);
-            this.cardRightPageTurnButton.Name = "cardRightPageTurnButton";
-            this.cardRightPageTurnButton.Size = new System.Drawing.Size(35, 23);
-            this.cardRightPageTurnButton.TabIndex = 63;
-            this.cardRightPageTurnButton.Text = ">>";
-            this.cardRightPageTurnButton.UseVisualStyleBackColor = true;
-            this.cardRightPageTurnButton.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // cardLeftPageTurnButton
-            // 
-            this.cardLeftPageTurnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cardLeftPageTurnButton.Location = new System.Drawing.Point(9, 92);
-            this.cardLeftPageTurnButton.Name = "cardLeftPageTurnButton";
-            this.cardLeftPageTurnButton.Size = new System.Drawing.Size(35, 23);
-            this.cardLeftPageTurnButton.TabIndex = 64;
-            this.cardLeftPageTurnButton.Text = "<<";
-            this.cardLeftPageTurnButton.UseVisualStyleBackColor = true;
-            this.cardLeftPageTurnButton.Click += new System.EventHandler(this.button4_Click);
             // 
             // RiskBoard
             // 

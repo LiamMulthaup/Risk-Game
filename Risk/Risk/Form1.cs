@@ -42,6 +42,7 @@ namespace Risk
         bool winner = false;
         int[][] playerCards = new int[6][];
         int page;
+        int playerNumber;
         public RiskBoard()
         {
             InitializeComponent();
@@ -1131,26 +1132,26 @@ namespace Risk
             int[] playerCardsSaved;
             try
             {
-                SIZE = playerCards[turn].Length;
+                SIZE = playerCards[playerNumber].Length;
                 playerCardsSaved = new int[SIZE];
                 for (int x = 0; x < SIZE; x++)
                 {
-                    playerCardsSaved[x] = playerCards[turn][x];
+                    playerCardsSaved[x] = playerCards[playerNumber][x];
                 }
-                playerCards[turn] = new int[SIZE + 1];
+                playerCards[playerNumber] = new int[SIZE + 1];
                 for (int x = 0; x < SIZE; x++)
                 {
-                    playerCards[turn][x] = playerCardsSaved[x];
+                    playerCards[playerNumber][x] = playerCardsSaved[x];
                 }
                 Random rand = new Random();
-                playerCards[turn][SIZE] = rand.Next(3) + 1;
+                playerCards[playerNumber][SIZE] = rand.Next(3) + 1;
             }
             catch
             {
                 SIZE = 0;
-                playerCards[turn] = new int[SIZE + 1];
+                playerCards[playerNumber] = new int[SIZE + 1];
                 Random rand = new Random();
-                playerCards[turn][SIZE] = rand.Next(3) + 1;
+                playerCards[playerNumber][SIZE] = rand.Next(3) + 1;
             }
             
         }
@@ -1177,11 +1178,11 @@ namespace Risk
             players--;
             if (players == 1)
             {
-                MessageBox.Show("Player " + playerstuff + " defeated!");
+                MessageBox.Show("Player " + turnName + " WON!");
             }
             else
             {
-                MessageBox.Show("Player " + turnName + " WON!");
+                MessageBox.Show("Player " + playerstuff + " defeated!");
             }
         }
 
@@ -1334,31 +1335,37 @@ namespace Risk
             {
                 turnColor = color1;
                 turnName = player1Name;
+                playerNumber = 1;
             }
             if (orderplayer2 == turn)
             {
                 turnColor = color2;
                 turnName = player2Name;
+                playerNumber = 2;
             }
             if (orderplayer3 == turn)
             {
                 turnColor = color3;
                 turnName = player3Name;
+                playerNumber = 3;
             }
             if (orderplayer4 == turn)
             {
                 turnColor = color4;
                 turnName = player4Name;
+                playerNumber = 4;
             }
             if (orderplayer5 == turn)
             {
                 turnColor = color5;
                 turnName = player5Name;
+                playerNumber = 5;
             }
             if (orderplayer6 == turn)
             {
                 turnColor = color6;
                 turnName = player6Name;
+                playerNumber = 6;
             }
             
         }
@@ -1457,7 +1464,7 @@ namespace Risk
                 int x = (page - 1) * 5;
                 while (x < page * 5)
                 {
-                    if (playerCards[turn].Length > x)
+                    if (playerCards[playerNumber].Length > x)
                     {
                         int y = x - ((page - 1) * 5);
                         if (y == 0) { CheckCardType(x, CardPic1); }
@@ -1468,7 +1475,7 @@ namespace Risk
                     }
                     x++;
                 }
-                if (playerCards[turn].Length > page * 5)
+                if (playerCards[playerNumber].Length > page * 5)
                 {
                     cardRightPageTurnButton.Visible = true;
                 }
@@ -1493,17 +1500,17 @@ namespace Risk
         private void CheckCardType(int x, PictureBox pic)
         {
             pic.Visible = true;
-            if (playerCards[turn][x] == 1)
+            if (playerCards[playerNumber][x] == 1)
             {
                 pic.Image = Properties.Resources.King_Spades;
                 pic.Refresh();
             }
-            if (playerCards[turn][x] == 2)
+            if (playerCards[playerNumber][x] == 2)
             {
                 pic.Image = Properties.Resources.Queen_Spades;
                 pic.Refresh();
             }
-            if (playerCards[turn][x] == 3)
+            if (playerCards[playerNumber][x] == 3)
             {
                 pic.Image = Properties.Resources.Jack_Spades__1_;
                 pic.Refresh();
