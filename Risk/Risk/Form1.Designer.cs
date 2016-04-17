@@ -108,6 +108,7 @@
             this.useCardButton = new System.Windows.Forms.Button();
             this.beginTurnButton = new System.Windows.Forms.Button();
             this.beginGameGroup = new System.Windows.Forms.GroupBox();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.randomLabel16 = new System.Windows.Forms.Label();
             this.order6 = new System.Windows.Forms.Label();
             this.order5 = new System.Windows.Forms.Label();
@@ -177,10 +178,10 @@
             this.winTransferAmount = new System.Windows.Forms.Label();
             this.randomLabel25 = new System.Windows.Forms.Label();
             this.settingsPanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cardIncreasingSettingCheckBox = new System.Windows.Forms.CheckBox();
-            this.settingsButton = new System.Windows.Forms.Button();
             this.closeSettingsPanel = new System.Windows.Forms.Button();
+            this.cardIncreasingSettingCheckBox = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -1122,6 +1123,17 @@
             this.beginGameGroup.Text = "                                   New Game                                      " +
     "                                            ";
             // 
+            // settingsButton
+            // 
+            this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsButton.Location = new System.Drawing.Point(399, 59);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(57, 23);
+            this.settingsButton.TabIndex = 32;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // randomLabel16
             // 
             this.randomLabel16.AutoSize = true;
@@ -1885,6 +1897,7 @@
             // settingsPanel
             // 
             this.settingsPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.settingsPanel.Controls.Add(this.panel1);
             this.settingsPanel.Controls.Add(this.closeSettingsPanel);
             this.settingsPanel.Controls.Add(this.cardIncreasingSettingCheckBox);
             this.settingsPanel.Controls.Add(this.label2);
@@ -1895,15 +1908,16 @@
             this.settingsPanel.TabIndex = 62;
             this.settingsPanel.Visible = false;
             // 
-            // label2
+            // closeSettingsPanel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Book Antiqua", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(291, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 42);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Settings";
+            this.closeSettingsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeSettingsPanel.Location = new System.Drawing.Point(327, 406);
+            this.closeSettingsPanel.Name = "closeSettingsPanel";
+            this.closeSettingsPanel.Size = new System.Drawing.Size(75, 23);
+            this.closeSettingsPanel.TabIndex = 2;
+            this.closeSettingsPanel.Text = "Close";
+            this.closeSettingsPanel.UseVisualStyleBackColor = true;
+            this.closeSettingsPanel.Click += new System.EventHandler(this.closeSettingsPanel_Click);
             // 
             // cardIncreasingSettingCheckBox
             // 
@@ -1917,27 +1931,22 @@
             this.cardIncreasingSettingCheckBox.Text = "Cards increase in Value";
             this.cardIncreasingSettingCheckBox.UseVisualStyleBackColor = true;
             // 
-            // settingsButton
+            // label2
             // 
-            this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsButton.Location = new System.Drawing.Point(399, 59);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(57, 23);
-            this.settingsButton.TabIndex = 32;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.button1_Click_2);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Book Antiqua", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(291, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(146, 42);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Settings";
             // 
-            // closeSettingsPanel
+            // panel1
             // 
-            this.closeSettingsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeSettingsPanel.Location = new System.Drawing.Point(327, 406);
-            this.closeSettingsPanel.Name = "closeSettingsPanel";
-            this.closeSettingsPanel.Size = new System.Drawing.Size(75, 23);
-            this.closeSettingsPanel.TabIndex = 2;
-            this.closeSettingsPanel.Text = "Close";
-            this.closeSettingsPanel.UseVisualStyleBackColor = true;
-            this.closeSettingsPanel.Click += new System.EventHandler(this.closeSettingsPanel_Click);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 3;
             // 
             // RiskBoard
             // 
@@ -2192,6 +2201,7 @@
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.CheckBox cardIncreasingSettingCheckBox;
         private System.Windows.Forms.Button closeSettingsPanel;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

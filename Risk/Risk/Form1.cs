@@ -1288,6 +1288,7 @@ namespace Risk
             if (players == 1)
             {
                 MessageBox.Show("Player " + turnName + " WON!");
+                this.Close();
             }
             else
             {
