@@ -988,6 +988,44 @@ namespace Risk
                 {
                     armiesTotal += 10;
                 }
+                removeCards(playerNumber, selectedPlayerCards);
+                selectedPlayerCards.Clear();
+                showCards();
+            }
+        }
+
+        private void removeCards(int playerid, List<int> cardsToBeRemoved)
+        {
+            List<int> PlayerCardPlaceHolder = new List<int>();
+            for (int x = 0; x < playerCards[playerid].Length; x++)
+            {
+                PlayerCardPlaceHolder.Add(playerCards[playerid][x]);
+            }
+            for (int x = 1; x < cardsToBeRemoved.Count; x++)
+            {
+                try
+                {
+                    for (int y = x; y < cardsToBeRemoved[y - 1]; y--)
+                    {
+                        int xv = cardsToBeRemoved[y - 1];
+                        int yv = cardsToBeRemoved[y];
+                        cardsToBeRemoved[y] = xv;
+                        cardsToBeRemoved[y - 1] = yv;
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+            for (int x = 0; x < cardsToBeRemoved.Count; x++)
+            {
+                PlayerCardPlaceHolder.RemoveAt(cardsToBeRemoved[x]);
+            }
+            playerCards[playerid] = new int[PlayerCardPlaceHolder.Count];
+            for (int x = 0; x < PlayerCardPlaceHolder.Count; x++)
+            {
+                playerCards[playerid][x] = PlayerCardPlaceHolder[x];
             }
         }
 
