@@ -32,18 +32,27 @@ namespace Risk
         int turnPhase = 0; // Directs code in what part of the turn it is.
         int players; // Identifies how many players there are.
         int orderplayer1, orderplayer2, orderplayer3, orderplayer4, orderplayer5, orderplayer6; // Identifies player by order.
+
         int armiesUsed, armiesTotal; // Shows how many armies have been use and how many are left.
+
         int timup = 0; // Used to distinguish which alert should be hidden when the timer is up,
         int commandTest = 0;
+
         string[] numberData = new string[42]; //An array used for recorderd army data.
+
         int deffendingTroops; // Used to transfer the deffending armies # between two unconnected methods
         int attackingtimCounter = 0;
         int originalTransferringValue;
+
         bool winner = false;
         int[][] playerCards = new int[7][];
         int page;
         int playerNumber;
         List<int> selectedPlayerCards = new List<int>();
+        int cardvalue = 3;
+
+        bool cardIncrementingSetting = true;
+
         public RiskBoard()
         {
             InitializeComponent();
@@ -968,13 +977,23 @@ namespace Risk
 
         private void useCardButton_Click(object sender, EventArgs e)
         {
-
+            if (selectedPlayerCards.Count == 3 && playerCards[playerNumber][selectedPlayerCards[0]] != playerCards[playerNumber][selectedPlayerCards[1]] && playerCards[playerNumber][selectedPlayerCards[0]] != playerCards[playerNumber][selectedPlayerCards[2]] && playerCards[playerNumber][selectedPlayerCards[1]] != playerCards[playerNumber][selectedPlayerCards[2]])
+            {
+                if (cardIncrementingSetting == true)
+                {
+                    armiesTotal += cardvalue;
+                    cardvalue += 3;
+                }
+                else
+                {
+                    armiesTotal += 10;
+                }
+            }
         }
 
         private void beginTurnButton_Click(object sender, EventArgs e)
         {
             turnPhase = 3;
-            armiesTotal = 0;
             armiesUsed = 0;
             newTurnBox.Visible = false;
             selectedPlayerCards.Clear();
@@ -1456,6 +1475,18 @@ namespace Risk
             troopsDeployedText.Text = "(" + armiesUsed + "/" + armiesTotal + ")";
         }
 
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            settingsPanel.Location = new Point(29, 14);
+            settingsPanel.Visible = true;
+        }
+
+        private void closeSettingsPanel_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = false;
+            cardIncrementingSetting = cardIncreasingSettingCheckBox.Checked;
+        }
+
         private void showCards()//takes card data and uses it to display them on the newTurnBox.
         {
             CardPic1.Visible = false;
@@ -1540,11 +1571,11 @@ namespace Risk
                 newTurnBox.Text = "Begin Turn: " + turnName;
                 page = 1;
                 showCards();
+                armiesTotal = 0;
+                checkArmyGain();
             }
             if (turnPhase == 3)
             {
-                armiesTotal = 0;
-                checkArmyGain();
                 recordPresentArmyData();
                 timup = 1;
                 deployAlert.Visible = true;

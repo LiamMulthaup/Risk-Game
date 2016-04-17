@@ -176,6 +176,11 @@
             this.winTransferDoneButton = new System.Windows.Forms.Button();
             this.winTransferAmount = new System.Windows.Forms.Label();
             this.randomLabel25 = new System.Windows.Forms.Label();
+            this.settingsPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cardIncreasingSettingCheckBox = new System.Windows.Forms.CheckBox();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.closeSettingsPanel = new System.Windows.Forms.Button();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -194,6 +199,7 @@
             this.diceBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.winTransferTrackBar)).BeginInit();
             this.winTransferGroup.SuspendLayout();
+            this.settingsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // argentina
@@ -969,7 +975,7 @@
             this.newTurnBox.Controls.Add(this.useCardButton);
             this.newTurnBox.Controls.Add(this.beginTurnButton);
             this.newTurnBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.newTurnBox.Location = new System.Drawing.Point(282, 170);
+            this.newTurnBox.Location = new System.Drawing.Point(285, 183);
             this.newTurnBox.Name = "newTurnBox";
             this.newTurnBox.Size = new System.Drawing.Size(300, 131);
             this.newTurnBox.TabIndex = 54;
@@ -1073,6 +1079,7 @@
             // 
             // beginGameGroup
             // 
+            this.beginGameGroup.Controls.Add(this.settingsButton);
             this.beginGameGroup.Controls.Add(this.randomLabel16);
             this.beginGameGroup.Controls.Add(this.order6);
             this.beginGameGroup.Controls.Add(this.order5);
@@ -1107,7 +1114,7 @@
             this.beginGameGroup.Controls.Add(this.beginGameButton);
             this.beginGameGroup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.beginGameGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginGameGroup.Location = new System.Drawing.Point(756, 510);
+            this.beginGameGroup.Location = new System.Drawing.Point(779, 495);
             this.beginGameGroup.Name = "beginGameGroup";
             this.beginGameGroup.Size = new System.Drawing.Size(569, 400);
             this.beginGameGroup.TabIndex = 55;
@@ -1875,6 +1882,63 @@
             this.randomLabel25.TabIndex = 61;
             this.randomLabel25.Text = "Transfer              Armies";
             // 
+            // settingsPanel
+            // 
+            this.settingsPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.settingsPanel.Controls.Add(this.closeSettingsPanel);
+            this.settingsPanel.Controls.Add(this.cardIncreasingSettingCheckBox);
+            this.settingsPanel.Controls.Add(this.label2);
+            this.settingsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsPanel.Location = new System.Drawing.Point(770, 510);
+            this.settingsPanel.Name = "settingsPanel";
+            this.settingsPanel.Size = new System.Drawing.Size(742, 439);
+            this.settingsPanel.TabIndex = 62;
+            this.settingsPanel.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Book Antiqua", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(291, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(146, 42);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Settings";
+            // 
+            // cardIncreasingSettingCheckBox
+            // 
+            this.cardIncreasingSettingCheckBox.AutoSize = true;
+            this.cardIncreasingSettingCheckBox.Checked = true;
+            this.cardIncreasingSettingCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cardIncreasingSettingCheckBox.Location = new System.Drawing.Point(268, 93);
+            this.cardIncreasingSettingCheckBox.Name = "cardIncreasingSettingCheckBox";
+            this.cardIncreasingSettingCheckBox.Size = new System.Drawing.Size(195, 24);
+            this.cardIncreasingSettingCheckBox.TabIndex = 1;
+            this.cardIncreasingSettingCheckBox.Text = "Cards increase in Value";
+            this.cardIncreasingSettingCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsButton.Location = new System.Drawing.Point(399, 59);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(57, 23);
+            this.settingsButton.TabIndex = 32;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // closeSettingsPanel
+            // 
+            this.closeSettingsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeSettingsPanel.Location = new System.Drawing.Point(327, 406);
+            this.closeSettingsPanel.Name = "closeSettingsPanel";
+            this.closeSettingsPanel.Size = new System.Drawing.Size(75, 23);
+            this.closeSettingsPanel.TabIndex = 2;
+            this.closeSettingsPanel.Text = "Close";
+            this.closeSettingsPanel.UseVisualStyleBackColor = true;
+            this.closeSettingsPanel.Click += new System.EventHandler(this.closeSettingsPanel_Click);
+            // 
             // RiskBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1882,6 +1946,7 @@
             this.BackgroundImage = global::Risk.Properties.Resources.pic1255403_md;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(793, 523);
+            this.Controls.Add(this.settingsPanel);
             this.Controls.Add(this.winTransferGroup);
             this.Controls.Add(this.diceBox);
             this.Controls.Add(this.armiesTrackBar);
@@ -1966,6 +2031,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.winTransferTrackBar)).EndInit();
             this.winTransferGroup.ResumeLayout(false);
             this.winTransferGroup.PerformLayout();
+            this.settingsPanel.ResumeLayout(false);
+            this.settingsPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2120,6 +2187,11 @@
         private System.Windows.Forms.Button winTransferDoneButton;
         private System.Windows.Forms.Button cardLeftPageTurnButton;
         private System.Windows.Forms.Button cardRightPageTurnButton;
+        private System.Windows.Forms.Panel settingsPanel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.CheckBox cardIncreasingSettingCheckBox;
+        private System.Windows.Forms.Button closeSettingsPanel;
     }
 }
 
