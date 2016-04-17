@@ -782,9 +782,20 @@ namespace Risk
 
         private void commandButton_Click(object sender, EventArgs e)
         {
-            if (commandText.Text == "phase 2 please") { armiesUsed = 0; armiesTotal = 0; initialdeployTroops(); }
-            if (commandText.Text == "gimme cards") { getCards(); }
-            commandCenterGroup.Visible = false;
+            if (commandText.Text == "phase 2 please") { armiesUsed = 0; armiesTotal = 0; initialdeployTroops();
+                commandCenterGroup.Visible = false;
+            }
+            if (commandText.Text == "gimme cards") { getCards();
+                commandCenterGroup.Visible = false;
+            }
+            if (commandText.Text == "gimme armies 10")
+            {
+                armiesTotal += 10;
+            }
+            if (commandText.Text == "")
+            {
+                commandCenterGroup.Visible = false;
+            }
         }
 
         private void commandTimer_Tick(object sender, EventArgs e)
@@ -1167,14 +1178,15 @@ namespace Risk
                     finishAttacking(true);
                     if (checkTerritoryAmount(colorid) == 0)
                     {
+                        int defeatedPlayer = 0;
                         int playerOrderNumber = 0;
-                        if (color1 == colorid) { playerOrderNumber = orderplayer1; }
-                        if (color2 == colorid) { playerOrderNumber = orderplayer2; }
-                        if (color3 == colorid) { playerOrderNumber = orderplayer3; }
-                        if (color4 == colorid) { playerOrderNumber = orderplayer4; }
-                        if (color5 == colorid) { playerOrderNumber = orderplayer5; }
-                        if (color6 == colorid) { playerOrderNumber = orderplayer6; }
-                        getLosersCards(playerOrderNumber);
+                        if (color1 == colorid) { playerOrderNumber = orderplayer1; defeatedPlayer = 1; }
+                        if (color2 == colorid) { playerOrderNumber = orderplayer2; defeatedPlayer = 2; }
+                        if (color3 == colorid) { playerOrderNumber = orderplayer3; defeatedPlayer = 3; }
+                        if (color4 == colorid) { playerOrderNumber = orderplayer4; defeatedPlayer = 4; }
+                        if (color5 == colorid) { playerOrderNumber = orderplayer5; defeatedPlayer = 5; }
+                        if (color6 == colorid) { playerOrderNumber = orderplayer6; defeatedPlayer = 6; }
+                        getLosersCards(defeatedPlayer);
                         removePlayer(playerOrderNumber);
                     }
                     if (winner == false)
@@ -1214,10 +1226,48 @@ namespace Risk
             }
             
         }
-        private void getLosersCards(int playerOrderNumber)
-        {
 
+        private void getLosersCards(int defeatedPlayer)
+        {
+            List<int> defeatedCards = new List<int>();
+            for (int x = 0; x < playerCards[defeatedPlayer].Length; x++)
+            { defeatedCards.Add(playerCards[defeatedPlayer][x]); }
+            try
+            {
+                AddSpecificCards(defeatedCards, playerNumber);
+                removeCards(defeatedPlayer, defeatedCards);
+            }
+            catch
+            { }
         }
+
+        private void AddSpecificCards(List<int> addedCards, int cardGainer)
+        {
+            int cardHolderLength;
+            try
+            {
+                int[] playerCardsPlaceHolder = new int[playerCards[cardGainer].Length];
+                for (int x = 0; x < playerCardsPlaceHolder.Length; x++)
+                {
+                    playerCardsPlaceHolder[x] = playerCards[cardGainer][x];
+                }
+                playerCards[cardGainer] = new int[playerCardsPlaceHolder.Length + addedCards.Count];
+                for (int x = 0; x < playerCardsPlaceHolder.Length; x++)
+                {
+                    playerCards[cardGainer][x] = playerCardsPlaceHolder[x];
+                }
+                cardHolderLength = playerCardsPlaceHolder.Length;
+            }
+            catch
+            {
+                cardHolderLength = 0;
+            }
+            for (int x = 0; x < addedCards.Count; x++)
+            {
+                playerCards[cardGainer][x + cardHolderLength] = addedCards[x];
+            }
+        }
+
         private void removePlayer(int playerOrderNumber)
         {
             string playerstuff = "";
