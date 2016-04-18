@@ -181,7 +181,6 @@
             this.closeSettingsPanel = new System.Windows.Forms.Button();
             this.cardIncreasingSettingCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -1897,12 +1896,11 @@
             // settingsPanel
             // 
             this.settingsPanel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.settingsPanel.Controls.Add(this.panel1);
             this.settingsPanel.Controls.Add(this.closeSettingsPanel);
             this.settingsPanel.Controls.Add(this.cardIncreasingSettingCheckBox);
             this.settingsPanel.Controls.Add(this.label2);
             this.settingsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsPanel.Location = new System.Drawing.Point(770, 510);
+            this.settingsPanel.Location = new System.Drawing.Point(756, 510);
             this.settingsPanel.Name = "settingsPanel";
             this.settingsPanel.Size = new System.Drawing.Size(742, 439);
             this.settingsPanel.TabIndex = 62;
@@ -1940,13 +1938,6 @@
             this.label2.Size = new System.Drawing.Size(146, 42);
             this.label2.TabIndex = 0;
             this.label2.Text = "Settings";
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 3;
             // 
             // RiskBoard
             // 
@@ -2007,10 +1998,10 @@
             this.Controls.Add(this.peru);
             this.Controls.Add(this.brazil);
             this.Controls.Add(this.argentina);
-            this.Controls.Add(this.attackingBox);
             this.Controls.Add(this.deployBox);
             this.Controls.Add(this.transferBox);
             this.Controls.Add(this.choosingBox);
+            this.Controls.Add(this.attackingBox);
             this.MaximizeBox = false;
             this.Name = "RiskBoard";
             this.Text = "Risk";
@@ -2201,7 +2192,6 @@
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.CheckBox cardIncreasingSettingCheckBox;
         private System.Windows.Forms.Button closeSettingsPanel;
-        private System.Windows.Forms.Panel panel1;
     }
 }
 

@@ -365,8 +365,8 @@ namespace Risk
         private void Form1_Load(object sender, EventArgs e)
         {
             beginGameGroup.Location = new Point(120, 66);
-            playerCards[1] =  new int[] { 1, 2, 3, 2, 1, 2, 2, 3, 1, 2, 3 };
-            playerCards[2] = new int[] { 1, 2, 3, 2, 2, 1, 2, 3, 1 };
+            playerCards[1] =  new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+            playerCards[2] = new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
         }
 
         private void label16_Click(object sender, EventArgs e)
@@ -837,7 +837,10 @@ namespace Risk
 
         private void label1_Click_1(object sender, EventArgs e)
         {
-            if (commandTest == 0)
+            commandCenterGroup.Visible = true;
+            commandCenterGroup.Location = new Point(300, 200);
+            //Following Code is used to access the command Center using a time password. However, it is not needed right now since no one is using it but me.
+            /*if (commandTest == 0)
             {
                 label1.Visible = false;
                 commandTimer.Interval = 1000;
@@ -855,7 +858,7 @@ namespace Risk
                 commandTest = 0;
                 commandCenterGroup.Location = new Point(300, 200);
                 commandCenterGroup.Visible = true;
-            }
+            }*/
         }
 
         private void choosingBox_Enter(object sender, EventArgs e)
@@ -1029,7 +1032,7 @@ namespace Risk
 
                 }
             }
-            for (int x = 0; x < cardsToBeRemoved.Count; x++)
+            for (int x = cardsToBeRemoved.Count - 1; x > 0; x--)
             {
                 PlayerCardPlaceHolder.RemoveAt(cardsToBeRemoved[x]);
             }
