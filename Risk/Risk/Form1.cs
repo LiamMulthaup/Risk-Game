@@ -23,8 +23,8 @@ namespace Risk
         string player5Name = "";
         string player6Name = "";
 
-        object attackingTerritory;
-        object defendingTerritory;
+        object attackingTerritory;//Used as a reference to the attacking or source terrirory.
+        object defendingTerritory;//Used as a reference to the defending or receiving territory.
 
         string[] color = new string[43]; //Identifies territory by way of color.
         int turn; // Identifies turn.
@@ -41,17 +41,17 @@ namespace Risk
         string[] numberData = new string[42]; //An array used for recorderd army data.
 
         int deffendingTroops; // Used to transfer the deffending armies # between two unconnected methods
-        int attackingtimCounter = 0;
-        int originalTransferringValue;
+        int attackingtimCounter = 0;//Used as a counter for repetitions of dice spins.
+        int originalTransferringValue;//Used to hold the value of the believe it or not the original transferring value.
 
-        bool winner = false;
-        int[][] playerCards = new int[7][];
-        int page;
-        int playerNumber;
-        List<int> selectedPlayerCards = new List<int>();
-        int cardvalue = 3;
+        bool winner = false;// Used to determive if a player has taken over a new territory or not.
+        int[][] playerCards = new int[7][];// Used to hold the data for a player's cards.
+        int page;// Used to identify what page of cards is shown.
+        int playerNumber;// Identifies the number of the player currently running through his turn.
+        List<int> selectedPlayerCards = new List<int>();// Identifies which cards are selected to be used. Holds the cards' index in the playerCards array.
+        int cardvalue = 3;// If cardIncrementingSetting is set to true, this variable is used to determine how many armies are gained if a card set is used.
 
-        bool cardIncrementingSetting = true;
+        bool cardIncrementingSetting = true;// Determines if cards should increase in value as they are used or not.
 
         public RiskBoard()
         {
@@ -63,7 +63,7 @@ namespace Risk
             territoryLabelClick(sender);
         }
 
-        private void territoryLabelClick(object sender)
+        private void territoryLabelClick(object sender)// Occurs if a territory label is clicked.
         {
             int colorid;
             colorid = senderdecryption(sender);
@@ -119,7 +119,7 @@ namespace Risk
             lbl.Visible = true;
         }
 
-        private void checkifTransferrable(object sender)
+        private void checkifTransferrable(object sender)// Checks if two territories are connected by a path of territories owned by a single player.
         {
             object territory = sender;
             object source;
@@ -188,7 +188,7 @@ namespace Risk
             
         }
 
-        private string findTerritoryStringName(object sender)
+        private string findTerritoryStringName(object sender)// Converts an object reference to the name of a territory.
         {
             string territoryName = "";
             if (sender == argentina) { territoryName = "Argentina"; }
@@ -233,9 +233,11 @@ namespace Risk
             if (sender == newGuinea) { territoryName = "New Guinea"; }
             if (sender == easternAustralia) { territoryName = "Eastern Australia"; }
             if (sender == westernAustralia) { territoryName = "Western Australia"; }
-            return territoryName;
+            return territoryName;// returns TerritoryName.
         }
 
+        /* Takes a label reference and the index of a certain object in the color array and turns the label back color and the color array 
+        object to the turnColor*/
         private void setColorTerritory(Label lbl, int colorid)
         {
             color[colorid] = turnColor;
@@ -269,7 +271,7 @@ namespace Risk
             }
         }
 
-        private int senderdecryption(object sender)
+        private int senderdecryption(object sender)// Takes the territory label and converts it to the index a certain color in the color array.
         {
             int colorid = 0;
             if (sender == argentina) { colorid = 1; }
@@ -364,7 +366,7 @@ namespace Risk
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            beginGameGroup.Location = new Point(120, 66);
+            beginGameGroup.Location = new Point(120, 66);// Put the BeginGameGroup in the center of the screen.
             playerCards[1] =  new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
             playerCards[2] = new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
         }
@@ -1927,9 +1929,9 @@ namespace Risk
             westernAustralia.Text = numberData[40];
             easternAustralia.Text = numberData[41];
         }
-        private bool CheckIfAdjacent(object territory, object source)
+        private bool CheckIfAdjacent(object territory, object source)//Checks if one territory is adjacent to another territory
         {
-            bool adjacent = false;
+            bool adjacent = false;//If there adjacent starts out as false;
             if ((territory == argentina && (source == brazil || source == peru)) ||
                 (territory == peru && (source == brazil || source == argentina || source == venezuela)) ||
                 (territory == venezuela && (source == brazil || source == peru || source == centralAmerica)) ||
@@ -1974,7 +1976,7 @@ namespace Risk
                 (territory == kamchatka && (source == alaska || source == irkutsk || source == yakutsk || source == mongolia || source == japan))
                 )
             {
-                adjacent = true;
+                adjacent = true;// If the two territories are a match adjacent comes out true.
             }
             return adjacent;
         }
