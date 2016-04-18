@@ -50,6 +50,7 @@ namespace Risk
         int playerNumber;// Identifies the number of the player currently running through his turn.
         List<int> selectedPlayerCards = new List<int>();// Identifies which cards are selected to be used. Holds the cards' index in the playerCards array.
         int cardvalue = 3;// If cardIncrementingSetting is set to true, this variable is used to determine how many armies are gained if a card set is used.
+        bool[] isAI = new bool[6] { false, false, false, false, false, false };
 
         bool cardIncrementingSetting = true;// Determines if cards should increase in value as they are used or not.
 
@@ -1581,6 +1582,36 @@ namespace Risk
             cardIncrementingSetting = cardIncreasingSettingCheckBox.Checked;
         }
 
+        private void aiCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            isAI[1] = aiCheckBox1.Checked;
+        }
+
+        private void aiCheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            isAI[2] = aiCheckBox2.Checked;
+        }
+
+        private void aiCheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            isAI[3] = aiCheckBox3.Checked;
+        }
+
+        private void aiCheckBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            isAI[4] = aiCheckBox4.Checked;
+        }
+
+        private void aiCheckBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            isAI[5] = aiCheckBox5.Checked;
+        }
+
+        private void aiCheckBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            isAI[6] = aiCheckBox6.Checked;
+        }
+
         private void showCards()//takes card data and uses it to display them on the newTurnBox.
         {
             CardPic1.Visible = false;
@@ -1660,13 +1691,21 @@ namespace Risk
             {
                 winner = false;
                 checkTurn();
-                newTurnBox.Visible = true;
-                newTurnBox.Location = new Point(268, 199);
-                newTurnBox.Text = "Begin Turn: " + turnName;
-                page = 1;
-                showCards();
-                armiesTotal = 0;
-                checkArmyGain();
+                if (isAI[playerNumber] == true)
+                {
+                    turnPhase = 20;
+                    AIRunGame();
+                }
+                else
+                {
+                    newTurnBox.Visible = true;
+                    newTurnBox.Location = new Point(268, 199);
+                    newTurnBox.Text = "Begin Turn: " + turnName;
+                    page = 1;
+                    showCards();
+                    armiesTotal = 0;
+                    checkArmyGain();
+                }
             }
             if (turnPhase == 3)
             {
@@ -2001,6 +2040,11 @@ namespace Risk
             lbl.Text = deffendingArmies.Text;
             if (win == true)
             { setColorTerritory(lbl, senderdecryption(defendingTerritory)); }
+        }
+        private void AIRunGame()
+        {
+            total
+            checkArmyGain();
         }
     }
 }

@@ -181,6 +181,12 @@
             this.closeSettingsPanel = new System.Windows.Forms.Button();
             this.cardIncreasingSettingCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.aiCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.aiCheckBox2 = new System.Windows.Forms.CheckBox();
+            this.aiCheckBox3 = new System.Windows.Forms.CheckBox();
+            this.aiCheckBox4 = new System.Windows.Forms.CheckBox();
+            this.aiCheckBox5 = new System.Windows.Forms.CheckBox();
+            this.aiCheckBox6 = new System.Windows.Forms.CheckBox();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -1079,6 +1085,12 @@
             // 
             // beginGameGroup
             // 
+            this.beginGameGroup.Controls.Add(this.aiCheckBox6);
+            this.beginGameGroup.Controls.Add(this.aiCheckBox5);
+            this.beginGameGroup.Controls.Add(this.aiCheckBox4);
+            this.beginGameGroup.Controls.Add(this.aiCheckBox3);
+            this.beginGameGroup.Controls.Add(this.aiCheckBox2);
+            this.beginGameGroup.Controls.Add(this.aiCheckBox1);
             this.beginGameGroup.Controls.Add(this.settingsButton);
             this.beginGameGroup.Controls.Add(this.randomLabel16);
             this.beginGameGroup.Controls.Add(this.order6);
@@ -1099,7 +1111,6 @@
             this.beginGameGroup.Controls.Add(this.nameText6);
             this.beginGameGroup.Controls.Add(this.nameText2);
             this.beginGameGroup.Controls.Add(this.nameText1);
-            this.beginGameGroup.Controls.Add(this.orderButton);
             this.beginGameGroup.Controls.Add(this.randomLabel15);
             this.beginGameGroup.Controls.Add(this.randomLabel14);
             this.beginGameGroup.Controls.Add(this.randomLabel13);
@@ -1112,15 +1123,15 @@
             this.beginGameGroup.Controls.Add(this.playerNumberTextBox);
             this.beginGameGroup.Controls.Add(this.randomLabel6);
             this.beginGameGroup.Controls.Add(this.beginGameButton);
+            this.beginGameGroup.Controls.Add(this.orderButton);
             this.beginGameGroup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.beginGameGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginGameGroup.Location = new System.Drawing.Point(779, 495);
+            this.beginGameGroup.Location = new System.Drawing.Point(106, 44);
             this.beginGameGroup.Name = "beginGameGroup";
             this.beginGameGroup.Size = new System.Drawing.Size(569, 400);
             this.beginGameGroup.TabIndex = 55;
             this.beginGameGroup.TabStop = false;
-            this.beginGameGroup.Text = "                                   New Game                                      " +
-    "                                            ";
+            this.beginGameGroup.Text = " ";
             // 
             // settingsButton
             // 
@@ -1939,6 +1950,78 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Settings";
             // 
+            // aiCheckBox1
+            // 
+            this.aiCheckBox1.AutoSize = true;
+            this.aiCheckBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aiCheckBox1.Location = new System.Drawing.Point(506, 142);
+            this.aiCheckBox1.Name = "aiCheckBox1";
+            this.aiCheckBox1.Size = new System.Drawing.Size(39, 20);
+            this.aiCheckBox1.TabIndex = 33;
+            this.aiCheckBox1.Text = "AI";
+            this.aiCheckBox1.UseVisualStyleBackColor = true;
+            this.aiCheckBox1.CheckedChanged += new System.EventHandler(this.aiCheckBox1_CheckedChanged);
+            // 
+            // aiCheckBox2
+            // 
+            this.aiCheckBox2.AutoSize = true;
+            this.aiCheckBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aiCheckBox2.Location = new System.Drawing.Point(506, 182);
+            this.aiCheckBox2.Name = "aiCheckBox2";
+            this.aiCheckBox2.Size = new System.Drawing.Size(39, 20);
+            this.aiCheckBox2.TabIndex = 34;
+            this.aiCheckBox2.Text = "AI";
+            this.aiCheckBox2.UseVisualStyleBackColor = true;
+            this.aiCheckBox2.CheckedChanged += new System.EventHandler(this.aiCheckBox2_CheckedChanged);
+            // 
+            // aiCheckBox3
+            // 
+            this.aiCheckBox3.AutoSize = true;
+            this.aiCheckBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aiCheckBox3.Location = new System.Drawing.Point(506, 218);
+            this.aiCheckBox3.Name = "aiCheckBox3";
+            this.aiCheckBox3.Size = new System.Drawing.Size(39, 20);
+            this.aiCheckBox3.TabIndex = 35;
+            this.aiCheckBox3.Text = "AI";
+            this.aiCheckBox3.UseVisualStyleBackColor = true;
+            this.aiCheckBox3.CheckedChanged += new System.EventHandler(this.aiCheckBox3_CheckedChanged);
+            // 
+            // aiCheckBox4
+            // 
+            this.aiCheckBox4.AutoSize = true;
+            this.aiCheckBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aiCheckBox4.Location = new System.Drawing.Point(506, 256);
+            this.aiCheckBox4.Name = "aiCheckBox4";
+            this.aiCheckBox4.Size = new System.Drawing.Size(39, 20);
+            this.aiCheckBox4.TabIndex = 36;
+            this.aiCheckBox4.Text = "AI";
+            this.aiCheckBox4.UseVisualStyleBackColor = true;
+            this.aiCheckBox4.CheckedChanged += new System.EventHandler(this.aiCheckBox4_CheckedChanged);
+            // 
+            // aiCheckBox5
+            // 
+            this.aiCheckBox5.AutoSize = true;
+            this.aiCheckBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aiCheckBox5.Location = new System.Drawing.Point(506, 296);
+            this.aiCheckBox5.Name = "aiCheckBox5";
+            this.aiCheckBox5.Size = new System.Drawing.Size(39, 20);
+            this.aiCheckBox5.TabIndex = 37;
+            this.aiCheckBox5.Text = "AI";
+            this.aiCheckBox5.UseVisualStyleBackColor = true;
+            this.aiCheckBox5.CheckedChanged += new System.EventHandler(this.aiCheckBox5_CheckedChanged);
+            // 
+            // aiCheckBox6
+            // 
+            this.aiCheckBox6.AutoSize = true;
+            this.aiCheckBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aiCheckBox6.Location = new System.Drawing.Point(506, 331);
+            this.aiCheckBox6.Name = "aiCheckBox6";
+            this.aiCheckBox6.Size = new System.Drawing.Size(39, 20);
+            this.aiCheckBox6.TabIndex = 38;
+            this.aiCheckBox6.Text = "AI";
+            this.aiCheckBox6.UseVisualStyleBackColor = true;
+            this.aiCheckBox6.CheckedChanged += new System.EventHandler(this.aiCheckBox6_CheckedChanged);
+            // 
             // RiskBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1946,6 +2029,7 @@
             this.BackgroundImage = global::Risk.Properties.Resources.pic1255403_md;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(793, 523);
+            this.Controls.Add(this.beginGameGroup);
             this.Controls.Add(this.settingsPanel);
             this.Controls.Add(this.winTransferGroup);
             this.Controls.Add(this.diceBox);
@@ -1955,7 +2039,6 @@
             this.Controls.Add(this.newTurnBox);
             this.Controls.Add(this.attackingAlert);
             this.Controls.Add(this.deployAlert);
-            this.Controls.Add(this.beginGameGroup);
             this.Controls.Add(this.easternAustralia);
             this.Controls.Add(this.newGuinea);
             this.Controls.Add(this.indonesia);
@@ -2192,6 +2275,12 @@
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.CheckBox cardIncreasingSettingCheckBox;
         private System.Windows.Forms.Button closeSettingsPanel;
+        private System.Windows.Forms.CheckBox aiCheckBox6;
+        private System.Windows.Forms.CheckBox aiCheckBox5;
+        private System.Windows.Forms.CheckBox aiCheckBox4;
+        private System.Windows.Forms.CheckBox aiCheckBox3;
+        private System.Windows.Forms.CheckBox aiCheckBox2;
+        private System.Windows.Forms.CheckBox aiCheckBox1;
     }
 }
 
