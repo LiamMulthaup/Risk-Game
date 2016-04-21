@@ -119,6 +119,7 @@ namespace Risk
             }
             lbl.Visible = true;
         }
+        
 
         private void checkifTransferrable(object sender)// Checks if two territories are connected by a path of territories owned by a single player.
         {
@@ -1235,11 +1236,11 @@ namespace Risk
 
         private void getLosersCards(int defeatedPlayer)
         {
-            List<int> defeatedCards = new List<int>();
-            for (int x = 0; x < playerCards[defeatedPlayer].Length; x++)
-            { defeatedCards.Add(playerCards[defeatedPlayer][x]); }
             try
             {
+                List<int> defeatedCards = new List<int>();
+                for (int x = 0; x < playerCards[defeatedPlayer].Length; x++)
+                { defeatedCards.Add(playerCards[defeatedPlayer][x]); }
                 AddSpecificCards(defeatedCards, playerNumber);
                 removeCards(defeatedPlayer, defeatedCards);
             }
@@ -1323,8 +1324,6 @@ namespace Risk
             attackingArmiesText.Text = "";
             deffendingTerritoryText.Text = "";
             attackingTerritoryText.Text = "(choose)";
-            attackingTerritory = "";
-            defendingTerritory = "";
         }
 
         private void continueAttackingButton_Click(object sender, EventArgs e)
@@ -1358,8 +1357,8 @@ namespace Risk
 
         private void finishAttackingButton_Click(object sender, EventArgs e)
         {
-            attackingTerritory = "";
-            defendingTerritory = "";
+            
+            
             attackingArmiesText.Text = "";
             attackingBox.Visible = false;
             transferBox.Visible = true;
@@ -1440,7 +1439,7 @@ namespace Risk
                 turnPhase = 10;
                 transferredArmiesText.Text = "";
                 armiesTrackBar.Visible = false;
-                defendingTerritory = "";
+                
                 runGame();
             }
         }
@@ -1767,8 +1766,8 @@ namespace Risk
         {
             armiesTrackBar.Visible = false;
             transferBox.Visible = false;
-            attackingTerritory = "";
-            defendingTerritory = "";
+            
+            
             turnPhase = 2;
             if (turn < players)
             {
@@ -2043,8 +2042,25 @@ namespace Risk
         }
         private void AIRunGame()
         {
-            total
+            armiesTotal = 0;
             checkArmyGain();
+            
+        }
+        private void SearchForBorderCountries()
+        {
+            object computerOwnedObject;
+            object[] territoryArray = new object[42] {
+                argentina, brazil, venezuela, peru,
+                centralAmerica, westernUnitedStates, easternUnitedStates, alberta, ontario, quebec, greenLand, northWestTerritory, alaska,
+                northAfrica, egypt, eastAfrica, congo, southAfrica, madagascar,
+                iceland, scandinavia, greatBritain, westernEurope, southernEurope, northernEurope, ukraine,
+                middleEast, afghanistan, india, siam, china, ural, siberia, mongolia, japan, irkutsk, yakutsk, kamchatka,
+                indonesia, newGuinea, easternAustralia, westernAustralia
+            };
+            int x;
+            for (x = 0; x < territoryArray.Length || color[senderdecryption(territoryArray[x])] == turnColor; x++) ;
+            computerOwnedObject = territoryArray[x];
+
         }
     }
 }
