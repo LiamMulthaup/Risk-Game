@@ -2040,15 +2040,13 @@ namespace Risk
             if (win == true)
             { setColorTerritory(lbl, senderdecryption(defendingTerritory)); }
         }
+
         private void AIRunGame()
         {
-            armiesTotal = 0;
-            checkArmyGain();
-            
-        }
-        private void SearchForBorderCountries()
-        {
-            object computerOwnedObject;
+            List<object> boundaryTerritories = new List<object>();// Lists all the boundary Territories the computer owns.
+            List<object> adjacentEnemyTerritories = new List<object>();// Lists all of the adjacent enemy Territories.
+
+            //declares an array to hold the names of all the territories in use.
             object[] territoryArray = new object[42] {
                 argentina, brazil, venezuela, peru,
                 centralAmerica, westernUnitedStates, easternUnitedStates, alberta, ontario, quebec, greenLand, northWestTerritory, alaska,
@@ -2057,9 +2055,76 @@ namespace Risk
                 middleEast, afghanistan, india, siam, china, ural, siberia, mongolia, japan, irkutsk, yakutsk, kamchatka,
                 indonesia, newGuinea, easternAustralia, westernAustralia
             };
-            int x;
-            for (x = 0; x < territoryArray.Length || color[senderdecryption(territoryArray[x])] == turnColor; x++) ;
-            computerOwnedObject = territoryArray[x];
+
+            {//Beggining of BoundaryTerritory algorithm------------
+
+                armiesTotal = 0;// Resets armiesTotal
+                object territory = argentina;//Is the territory that will be used as the initial computer starting point.
+                object source;// Is the territory that is being checked as the adjacent territory.
+
+                //tracks the path of territories that have been used.
+                bool[] pathTracker = new bool[42] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+
+                List<object> checkedTerritories = new List<object>();//holds the territories checked by the algorithm.
+
+                while (checkedTerritories.Count != checkTerritoryAmount(turnColor))
+                {
+                    for (int x = 0; x < territoryArray.Length; x++)// searches for a computer owned territory and declares the territory variable to that territory.
+                    {
+                        if (color[senderdecryption(territoryArray[x])] == turnColor)
+                        {
+                            territory = territoryArray[x];
+                        }
+                    }
+
+                    int[] activeTerritories = new int[1];
+                    List<int> newactiveTerritories = new List<int>();
+                    bool repeatedonce = false;
+                    bool finish = false;
+                    while (finish == false)
+                    {
+                        int halfRepetitions = 0;
+                        while (halfRepetitions < activeTerritories.Length)
+                        {
+                            if (repeatedonce == true)
+                            {
+                                territory = territoryArray[activeTerritories[halfRepetitions]];
+                            }
+
+                            int counter = 0;
+                            while (counter < territoryArray.Length)
+                            {
+                                source = territoryArray[counter];
+                                if (CheckIfAdjacent(territory, source) == true && color[senderdecryption(source)] == turnColor && pathTracker[counter] == false)
+                                {
+                                    repeatedonce = true;
+                                    newactiveTerritories.Add(counter);
+                                    pathTracker[counter] = true;
+                                }
+                                counter++;
+                            }
+                            halfRepetitions++;
+                        }
+                        if (newactiveTerritories.Count == 0)
+                        {
+                            finish = true;
+                        }
+                        else
+                        {
+                            activeTerritories = new int[newactiveTerritories.Count];
+                            int x = 0;
+                            while (x < activeTerritories.Length)
+                            {
+                                activeTerritories[x] = newactiveTerritories[x];
+                                x++;
+                            }
+                        }
+                    }
+
+                }
+
+            }//end of boundaryTerritory algorithm.--------
+
 
         }
     }
