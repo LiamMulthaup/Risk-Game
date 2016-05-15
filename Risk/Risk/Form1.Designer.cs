@@ -188,6 +188,7 @@
             this.cardIncreasingSettingCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.aiDecisionTimer = new System.Windows.Forms.Timer(this.components);
+            this.codeDeguggingTool = new System.Windows.Forms.ListBox();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -2028,6 +2029,14 @@
             this.aiDecisionTimer.Interval = 1000;
             this.aiDecisionTimer.Tick += new System.EventHandler(this.aiDecisionTimer_Tick);
             // 
+            // codeDeguggingTool
+            // 
+            this.codeDeguggingTool.FormattingEnabled = true;
+            this.codeDeguggingTool.Location = new System.Drawing.Point(727, 216);
+            this.codeDeguggingTool.Name = "codeDeguggingTool";
+            this.codeDeguggingTool.Size = new System.Drawing.Size(54, 95);
+            this.codeDeguggingTool.TabIndex = 63;
+            // 
             // RiskBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2035,6 +2044,7 @@
             this.BackgroundImage = global::Risk.Properties.Resources.pic1255403_md;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(793, 523);
+            this.Controls.Add(this.codeDeguggingTool);
             this.Controls.Add(this.beginGameGroup);
             this.Controls.Add(this.settingsPanel);
             this.Controls.Add(this.winTransferGroup);
@@ -2288,6 +2298,7 @@
         private System.Windows.Forms.CheckBox aiCheckBox2;
         private System.Windows.Forms.CheckBox aiCheckBox1;
         private System.Windows.Forms.Timer aiDecisionTimer;
+        private System.Windows.Forms.ListBox codeDeguggingTool;
     }
 }
 

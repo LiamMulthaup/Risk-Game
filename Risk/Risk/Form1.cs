@@ -37,6 +37,7 @@ namespace Risk
 
         int timup = 0; // Used to distinguish which alert should be hidden when the timer is up,
         int commandTest = 0;
+        int aiDecisionIndex;
 
         string[] numberData = new string[42]; //An array used for recorderd army data.
 
@@ -50,7 +51,7 @@ namespace Risk
         int playerNumber;// Identifies the number of the player currently running through his turn.
         List<int> selectedPlayerCards = new List<int>();// Identifies which cards are selected to be used. Holds the cards' index in the playerCards array.
         int cardvalue = 3;// If cardIncrementingSetting is set to true, this variable is used to determine how many armies are gained if a card set is used.
-        bool[] isAI = new bool[6] { false, false, false, false, false, false };
+        bool[] isAI = new bool[7] { false, false, false, false, false, false, false };
 
         bool cardIncrementingSetting = true;// Determines if cards should increase in value as they are used or not.
 
@@ -106,8 +107,15 @@ namespace Risk
                 {
                     setColorTerritory(lbl, colorid);
                     lbl.Text = "1";
-                    checkTurn();
-                    initialdeployTroops();
+                    if (isAI[playerNumber] == false)
+                    {
+                        checkTurn();
+                        initialdeployTroops();
+                    }
+                    else
+                    {
+                        checkTurn();
+                    }
                 }
                 if ((turnColor == "red" && lbl.BackColor == System.Drawing.Color.Red) || (turnColor == "blue" && lbl.BackColor == System.Drawing.Color.LightBlue) || (turnColor == "green" && lbl.BackColor == System.Drawing.Color.Green) || (turnColor == "brown" && lbl.BackColor == System.Drawing.Color.Tan) || (turnColor == "purple" && lbl.BackColor == System.Drawing.Color.MediumPurple) || (turnColor == "pink" && lbl.BackColor == System.Drawing.Color.Pink))
                 {
@@ -1562,7 +1570,78 @@ namespace Risk
                     turn++;//Go to next turn.
                 }
             }
+            if (isAI[playerNumber] == true)
+            {
+                turnPhase = 40;
+                aiDecisionIndex = 0;
+                aiDecisionTimer.Enabled = true;
+                aiDecisionTimer.Interval = 1000;
+                aiDecisionTimer.Start();
+            }
         }
+
+        private object AIInitialDeployment()
+        {
+            turnPhase = 1;
+            object[] territoryArray = new object[42] {
+                argentina, brazil, venezuela, peru,
+                centralAmerica, westernUnitedStates, easternUnitedStates, alberta, ontario, quebec, greenLand, northWestTerritory, alaska,
+                northAfrica, egypt, eastAfrica, congo, southAfrica, madagascar,
+                iceland, scandinavia, greatBritain, westernEurope, southernEurope, northernEurope, ukraine,
+                middleEast, afghanistan, india, siam, china, ural, siberia, mongolia, japan, irkutsk, yakutsk, kamchatka,
+                indonesia, newGuinea, easternAustralia, westernAustralia
+            };
+            int[] territoryChoiceRatings = new int[42] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
+            for (int x = 0; x < territoryArray.Length; x++)
+            {
+                if (color[senderdecryption(territoryArray[x])] == turnColor)
+                {
+                    for (int y = 0; y < territoryArray.Length; y++)
+                    {
+                        if (CheckIfAdjacent(territoryArray[x], territoryArray[y]) == true && color[senderdecryption(territoryArray[y])] == turnColor)
+                        {
+                            territoryChoiceRatings[x]++;
+                        }
+                    }
+                }
+            }
+            codeDeguggingTool.Items.Clear();
+            foreach (int item in territoryChoiceRatings)
+            {
+                codeDeguggingTool.Items.Add(item);
+            }
+
+            Random rand = new Random();
+            int highestvalue = 0;
+            int highestindex = -1;
+            for (int x = 0; x < territoryChoiceRatings.Length; x++)
+            {
+                Label lbl = territoryArray[x] as Label;
+                if (lbl.BackColor == System.Drawing.Color.Transparent &&  territoryChoiceRatings[x] > highestvalue)
+                {
+                    highestvalue = territoryChoiceRatings[x];
+                    highestindex = x;
+                }
+            }
+            if (highestindex != -1)
+            {
+                return territoryArray[highestindex];
+            }
+            else
+            {
+                List<object> possibleOptions = new List<object>();
+                foreach (object singleTerritory in territoryArray)
+                {
+                    Label lbl = singleTerritory as Label;
+                    if (lbl.BackColor == System.Drawing.Color.Transparent)
+                    {
+                        possibleOptions.Add(singleTerritory);
+                    }
+                }
+                return possibleOptions[rand.Next(possibleOptions.Count - 1)];
+            }
+        }
+
         private void deployedTroop()
         {
             armiesUsed++;
@@ -1656,6 +1735,18 @@ namespace Risk
 
             }
         }
+
+        private void aiDecisionTimer_Tick(object sender, EventArgs e)
+        {
+            if (aiDecisionIndex == 0)
+            {
+                territoryLabelClick(AIInitialDeployment());
+                aiDecisionTimer.Enabled = false;
+                aiDecisionTimer.Stop();
+                initialdeployTroops();
+            }
+        }
+
         private void CheckCardType(int x, PictureBox pic)
         {
             pic.Visible = true;
