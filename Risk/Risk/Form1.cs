@@ -2043,8 +2043,8 @@ namespace Risk
 
         private void AIRunGame()
         {
-            List<object> boundaryTerritories = new List<object>();// Lists all the boundary Territories the computer owns.
-            List<object> adjacentEnemyTerritories = new List<object>();// Lists all of the adjacent enemy Territories.
+            List<List<object>> boundaryTerritories = new List<List<object>>();// Lists all the boundary Territories the computer owns.
+            List<List<object>> adjacentEnemyTerritories = new List<List<object>>();// Lists all of the adjacent enemy Territories.
 
             //declares an array to hold the names of all the territories in use.
             object[] territoryArray = new object[42] {
@@ -2062,20 +2062,32 @@ namespace Risk
                 object territory = argentina;//Is the territory that will be used as the initial computer starting point.
                 object source;// Is the territory that is being checked as the adjacent territory.
 
-                //tracks the path of territories that have been used.
-                bool[] pathTracker = new bool[42] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
 
                 List<object> checkedTerritories = new List<object>();//holds the territories checked by the algorithm.
 
-                while (checkedTerritories.Count != checkTerritoryAmount(turnColor))
+                int twoDListCounter = -1;
+                while (checkedTerritories.Count != checkTerritoryAmount(turnColor))// Until all computer owned territories are checked continue commands.
                 {
                     for (int x = 0; x < territoryArray.Length; x++)// searches for a computer owned territory and declares the territory variable to that territory.
                     {
-                        if (color[senderdecryption(territoryArray[x])] == turnColor)
+                        if (color[senderdecryption(territoryArray[x])] == turnColor && checkedTerritories.IndexOf(territoryArray[x]) == -1)
                         {
                             territory = territoryArray[x];
+                            x = territoryArray.Length;
+                            {
+                                List<object> sublist = new List<object>();
+                                boundaryTerritories.Add(sublist);
+                            }
+                            {
+                                List<object> sublist = new List<object>();
+                                adjacentEnemyTerritories.Add(sublist);
+                            }
+                            twoDListCounter++;
                         }
                     }
+
+                    //tracks the path of territories that have been used.
+                    bool[] pathTracker = new bool[42] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
 
                     int[] activeTerritories = new int[1];
                     List<int> newactiveTerritories = new List<int>();
@@ -2099,6 +2111,13 @@ namespace Risk
                                 {
                                     repeatedonce = true;
                                     newactiveTerritories.Add(counter);
+                                    checkedTerritories.Add(territoryArray[counter]);
+                                    pathTracker[counter] = true;
+                                }
+                                if (CheckIfAdjacent(territory, source) == true && color[senderdecryption(source)] != turnColor && pathTracker[counter] == false)
+                                {
+                                    adjacentEnemyTerritories[twoDListCounter].Add(territoryArray[counter]);
+                                    boundaryTerritories[twoDListCounter].Add(territory);
                                     pathTracker[counter] = true;
                                 }
                                 counter++;
