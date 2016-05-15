@@ -187,6 +187,7 @@
             this.closeSettingsPanel = new System.Windows.Forms.Button();
             this.cardIncreasingSettingCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.aiDecisionTimer = new System.Windows.Forms.Timer(this.components);
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -2022,6 +2023,11 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Settings";
             // 
+            // aiDecisionTimer
+            // 
+            this.aiDecisionTimer.Interval = 1000;
+            this.aiDecisionTimer.Tick += new System.EventHandler(this.aiDecisionTimer_Tick);
+            // 
             // RiskBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2281,6 +2287,7 @@
         private System.Windows.Forms.CheckBox aiCheckBox3;
         private System.Windows.Forms.CheckBox aiCheckBox2;
         private System.Windows.Forms.CheckBox aiCheckBox1;
+        private System.Windows.Forms.Timer aiDecisionTimer;
     }
 }
 
