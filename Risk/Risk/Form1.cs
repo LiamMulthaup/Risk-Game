@@ -1598,9 +1598,9 @@ namespace Risk
                 {
                     for (int y = 0; y < territoryArray.Length; y++)
                     {
-                        if (CheckIfAdjacent(territoryArray[x], territoryArray[y]) == true && color[senderdecryption(territoryArray[y])] == turnColor)
+                        if (CheckIfAdjacent(territoryArray[x], territoryArray[y]) == true)
                         {
-                            territoryChoiceRatings[x]++;
+                            territoryChoiceRatings[y]++;
                         }
                     }
                 }
@@ -1638,7 +1638,15 @@ namespace Risk
                         possibleOptions.Add(singleTerritory);
                     }
                 }
-                return possibleOptions[rand.Next(possibleOptions.Count - 1)];
+                try
+                {
+                    return possibleOptions[rand.Next(possibleOptions.Count - 1)];
+                }
+                catch
+                {
+                    MessageBox.Show("Finished");
+                    return argentina;
+                }
             }
         }
 
