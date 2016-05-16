@@ -1584,7 +1584,7 @@ namespace Risk
                 turnPhase = 40;
                 aiDecisionIndex = 0;
                 aiDecisionTimer.Enabled = true;
-                aiDecisionTimer.Interval = 1000;
+                aiDecisionTimer.Interval = 5000;
                 aiDecisionTimer.Start();
             }
         }
@@ -2115,7 +2115,7 @@ namespace Risk
             if ((territory == argentina && (source == brazil || source == peru)) ||
                 (territory == peru && (source == brazil || source == argentina || source == venezuela)) ||
                 (territory == venezuela && (source == brazil || source == peru || source == centralAmerica)) ||
-                (territory == brazil && (source == northAfrica || source == argentina || source == venezuela)) ||
+                (territory == brazil && (source == northAfrica || source == argentina || source == venezuela || source == peru)) ||
                 (territory == centralAmerica && (source == venezuela || source == easternUnitedStates || source == westernUnitedStates)) ||
                 (territory == easternUnitedStates && (source == westernUnitedStates || source == centralAmerica || source == alberta || source == ontario)) ||
                 (territory == westernUnitedStates && (source == centralAmerica || source == easternUnitedStates || source == quebec || source == ontario)) ||
