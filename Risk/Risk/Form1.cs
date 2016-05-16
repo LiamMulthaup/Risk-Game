@@ -119,15 +119,24 @@ namespace Risk
                 }
                 if ((turnColor == "red" && lbl.BackColor == System.Drawing.Color.Red) || (turnColor == "blue" && lbl.BackColor == System.Drawing.Color.LightBlue) || (turnColor == "green" && lbl.BackColor == System.Drawing.Color.Green) || (turnColor == "brown" && lbl.BackColor == System.Drawing.Color.Tan) || (turnColor == "purple" && lbl.BackColor == System.Drawing.Color.MediumPurple) || (turnColor == "pink" && lbl.BackColor == System.Drawing.Color.Pink))
                 {
-                    lbl.Text = (int.Parse(lbl.Text) + 1).ToString();
-                    checkTurn();
-                    initialdeployTroops();
+                    if (isAI[playerNumber] == false)
+                    {
+                        lbl.Text = (int.Parse(lbl.Text) + 1).ToString();
+                        checkTurn();
+                        initialdeployTroops();
+                    }
+                    else
+                    {
+                        lbl.Text = (int.Parse(lbl.Text) + 1).ToString();
+                        checkTurn();
+                    }
+
                 }
-                
+
             }
             lbl.Visible = true;
         }
-        
+
 
         private void checkifTransferrable(object sender)// Checks if two territories are connected by a path of territories owned by a single player.
         {
@@ -195,7 +204,7 @@ namespace Risk
                 }
             }
 
-            
+
         }
 
         private string findTerritoryStringName(object sender)// Converts an object reference to the name of a territory.
@@ -377,7 +386,7 @@ namespace Risk
         private void Form1_Load(object sender, EventArgs e)
         {
             beginGameGroup.Location = new Point(120, 66);// Put the BeginGameGroup in the center of the screen.
-            playerCards[1] =  new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+            playerCards[1] = new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
             playerCards[2] = new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
         }
 
@@ -1160,7 +1169,7 @@ namespace Risk
                     highestDeffendingDice = int.Parse(dice5.Text);
                     middleDeffendingDice = int.Parse(dice4.Text);
                 }
-                
+
                 if (int.Parse(attackingArmies.Text) > 1 && int.Parse(deffendingArmies.Text) > 1)
                 {
                     if (middleAttackingDice > middleDeffendingDice)
@@ -1239,7 +1248,7 @@ namespace Risk
                 Random rand = new Random();
                 playerCards[playerNumber][SIZE] = rand.Next(3) + 1;
             }
-            
+
         }
 
         private void getLosersCards(int defeatedPlayer)
@@ -1365,8 +1374,8 @@ namespace Risk
 
         private void finishAttackingButton_Click(object sender, EventArgs e)
         {
-            
-            
+
+
             attackingArmiesText.Text = "";
             attackingBox.Visible = false;
             transferBox.Visible = true;
@@ -1447,7 +1456,7 @@ namespace Risk
                 turnPhase = 10;
                 transferredArmiesText.Text = "";
                 armiesTrackBar.Visible = false;
-                
+
                 runGame();
             }
         }
@@ -1490,7 +1499,7 @@ namespace Risk
                 turnName = player6Name;
                 playerNumber = 6;
             }
-            
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -1605,11 +1614,6 @@ namespace Risk
                     }
                 }
             }
-            codeDeguggingTool.Items.Clear();
-            foreach (int item in territoryChoiceRatings)
-            {
-                codeDeguggingTool.Items.Add(item);
-            }
 
             Random rand = new Random();
             int highestvalue = 0;
@@ -1617,7 +1621,7 @@ namespace Risk
             for (int x = 0; x < territoryChoiceRatings.Length; x++)
             {
                 Label lbl = territoryArray[x] as Label;
-                if (lbl.BackColor == System.Drawing.Color.Transparent &&  territoryChoiceRatings[x] > highestvalue)
+                if (lbl.BackColor == System.Drawing.Color.Transparent && territoryChoiceRatings[x] > highestvalue)
                 {
                     highestvalue = territoryChoiceRatings[x];
                     highestindex = x;
@@ -1644,8 +1648,47 @@ namespace Risk
                 }
                 catch
                 {
-                    MessageBox.Show("Finished");
-                    return argentina;
+                    territoryChoiceRatings = new int[42] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
+                    List<object> boundaryTerritories = new List<object>();
+
+                    for (int x = 0; x < territoryArray.Length; x++)
+                    {
+                        if (color[senderdecryption(territoryArray[x])] != turnColor)
+                        {
+                            for (int y = 0; y < territoryArray.Length; y++)
+                            {
+                                if (CheckIfAdjacent(territoryArray[x], territoryArray[y]) == true && color[senderdecryption(territoryArray[y])] == turnColor)
+                                {
+                                    Label homeTerritory = territoryArray[y] as Label;
+                                    Label enemyTerritory = territoryArray[x] as Label;
+                                    boundaryTerritories.Add(territoryArray[y]);
+                                    if (int.Parse(enemyTerritory.Text) > int.Parse(homeTerritory.Text))
+                                    {
+                                        territoryChoiceRatings[y] += int.Parse(enemyTerritory.Text) - int.Parse(homeTerritory.Text);
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    int highestvalue2 = 0;
+                    int highestindex2 = -1;
+                    for (int x = 0; x < territoryChoiceRatings.Length; x++)
+                    {
+                        if (territoryChoiceRatings[x] > highestvalue2)
+                        {
+                            highestvalue2 = territoryChoiceRatings[x];
+                            highestindex2 = x;
+                        }
+                    }
+                    if (highestindex2 != -1)
+                    {
+                        return territoryArray[highestindex2];
+                    }
+                    else
+                    {
+                        return boundaryTerritories[rand.Next(boundaryTerritories.Count - 1)];
+                    }
                 }
             }
         }

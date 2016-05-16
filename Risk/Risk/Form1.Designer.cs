@@ -2036,6 +2036,7 @@
             this.codeDeguggingTool.Name = "codeDeguggingTool";
             this.codeDeguggingTool.Size = new System.Drawing.Size(54, 95);
             this.codeDeguggingTool.TabIndex = 63;
+            this.codeDeguggingTool.Visible = false;
             // 
             // RiskBoard
             // 
