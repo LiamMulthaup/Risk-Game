@@ -983,7 +983,7 @@
             this.newTurnBox.Controls.Add(this.useCardButton);
             this.newTurnBox.Controls.Add(this.beginTurnButton);
             this.newTurnBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.newTurnBox.Location = new System.Drawing.Point(285, 183);
+            this.newTurnBox.Location = new System.Drawing.Point(771, 321);
             this.newTurnBox.Name = "newTurnBox";
             this.newTurnBox.Size = new System.Drawing.Size(300, 131);
             this.newTurnBox.TabIndex = 54;
@@ -2036,7 +2036,6 @@
             this.codeDeguggingTool.Name = "codeDeguggingTool";
             this.codeDeguggingTool.Size = new System.Drawing.Size(54, 95);
             this.codeDeguggingTool.TabIndex = 63;
-            this.codeDeguggingTool.Visible = false;
             // 
             // RiskBoard
             // 

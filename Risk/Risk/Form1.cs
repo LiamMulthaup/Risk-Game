@@ -1584,13 +1584,14 @@ namespace Risk
                 turnPhase = 40;
                 aiDecisionIndex = 0;
                 aiDecisionTimer.Enabled = true;
-                aiDecisionTimer.Interval = 5000;
+                aiDecisionTimer.Interval = 1000;
                 aiDecisionTimer.Start();
             }
         }
 
         private object AIInitialDeployment()
         {
+            Random rand = new Random();
             turnPhase = 1;
             object[] territoryArray = new object[42] {
                 argentina, brazil, venezuela, peru,
@@ -1609,13 +1610,72 @@ namespace Risk
                     {
                         if (CheckIfAdjacent(territoryArray[x], territoryArray[y]) == true)
                         {
-                            territoryChoiceRatings[y]++;
+                            territoryChoiceRatings[y]+= rand.Next(2) + 1;
                         }
                     }
                 }
             }
+            if (GetContinentPercentage(color1, "Australia") >= 0.75 || GetContinentPercentage(color2, "Australia") >= 0.75 || GetContinentPercentage(color3, "Australia") >= 0.75 || GetContinentPercentage(color4, "Australia") >= 0.75 || GetContinentPercentage(color5, "Australia") >= 0.75 || GetContinentPercentage(color6, "Australia") >= 0.75)
+            {
+                int increase = rand.Next(4) + 2; ;
+                territoryChoiceRatings[38] += increase; territoryChoiceRatings[39] += increase; territoryChoiceRatings[40] += increase; territoryChoiceRatings[41] += increase;
+            }
+            if (GetContinentPercentage(color1, "South America") >= 0.75 || GetContinentPercentage(color2, "South America") >= 0.75 || GetContinentPercentage(color3, "South America") >= 0.75 || GetContinentPercentage(color4, "South America") >= 0.75 || GetContinentPercentage(color5, "South America") >= 0.75 || GetContinentPercentage(color6, "South America") >= 0.75)
+            {
+                int increase = rand.Next(4) + 2; ;
+                territoryChoiceRatings[0] += increase; territoryChoiceRatings[1] += increase; territoryChoiceRatings[2] += increase; territoryChoiceRatings[3] += increase;
+            }
+            if (GetContinentPercentage(color1, "North America") >= 0.75 || GetContinentPercentage(color2, "North America") >= 0.75 || GetContinentPercentage(color3, "North America") >= 0.75 || GetContinentPercentage(color4, "North America") >= 0.75 || GetContinentPercentage(color5, "North America") >= 0.75 || GetContinentPercentage(color6, "North America") >= 0.75)
+            {
+                int increase = rand.Next(3) + 1; ;
+                territoryChoiceRatings[4] += increase; territoryChoiceRatings[4] += increase; territoryChoiceRatings[5] += increase; territoryChoiceRatings[6] += increase; territoryChoiceRatings[7] += increase; territoryChoiceRatings[8] += increase; territoryChoiceRatings[9] += increase; territoryChoiceRatings[10] += increase; territoryChoiceRatings[11] += increase; territoryChoiceRatings[12] += increase;
+            }
+            if (GetContinentPercentage(color1, "Europe") >= 0.75 || GetContinentPercentage(color2, "Europe") >= 0.75 || GetContinentPercentage(color3, "Europe") >= 0.75 || GetContinentPercentage(color4, "Europe") >= 0.75 || GetContinentPercentage(color5, "Europe") >= 0.75 || GetContinentPercentage(color6, "Europe") >= 0.75)
+            {
+                int increase = rand.Next(3) + 1; ;
+                territoryChoiceRatings[19] += increase; territoryChoiceRatings[20] += increase; territoryChoiceRatings[21] += increase; territoryChoiceRatings[22] += increase; territoryChoiceRatings[23] += increase; territoryChoiceRatings[24] += increase; territoryChoiceRatings[25] += increase;
+            }
+            if (GetContinentPercentage(color1, "Asia") >= 0.75 || GetContinentPercentage(color2, "Asia") >= 0.75 || GetContinentPercentage(color3, "Asia") >= 0.75 || GetContinentPercentage(color4, "Asia") >= 0.75 || GetContinentPercentage(color5, "Asia") >= 0.75 || GetContinentPercentage(color6, "Asia") >= 0.75)
+            {
+                int increase = rand.Next(2) + 1; ;
+                territoryChoiceRatings[26] += increase; territoryChoiceRatings[27] += increase; territoryChoiceRatings[28] += increase; territoryChoiceRatings[29] += increase; territoryChoiceRatings[30] += increase; territoryChoiceRatings[31] += increase; territoryChoiceRatings[32] += increase; territoryChoiceRatings[33] += increase; territoryChoiceRatings[34] += increase; territoryChoiceRatings[35] += increase; territoryChoiceRatings[36] += increase; territoryChoiceRatings[37] += increase;
+            }
+            if (GetContinentPercentage(color1, "Africa") >= 0.75 && GetContinentPercentage(color2, "Africa") >= 0.75 && GetContinentPercentage(color3, "Africa") >= 0.75 && GetContinentPercentage(color4, "Africa") >= 0.75 && GetContinentPercentage(color5, "Africa") >= 0.75 && GetContinentPercentage(color6, "Africa") >= 0.75)
+            {
+                int increase = rand.Next(3) + 1; ;
+                territoryChoiceRatings[13] += increase; territoryChoiceRatings[14] += increase; territoryChoiceRatings[15] += increase; territoryChoiceRatings[16] += increase; territoryChoiceRatings[17] += increase; territoryChoiceRatings[18] += increase;
+            }
 
-            Random rand = new Random();
+            if (GetContinentPercentage(color1, "Australia") == 0 && GetContinentPercentage(color2, "Australia") == 0 && GetContinentPercentage(color3, "Australia") == 0 && GetContinentPercentage(color4, "Australia") == 0 && GetContinentPercentage(color5, "Australia") == 0 && GetContinentPercentage(color6, "Australia") == 0)
+            {
+                int increase = rand.Next(4) + 2; ;
+                territoryChoiceRatings[38] += increase; territoryChoiceRatings[39] += increase; territoryChoiceRatings[40] += increase; territoryChoiceRatings[41] += increase;
+            }
+            if (GetContinentPercentage(color1, "South America") == 0 && GetContinentPercentage(color2, "South America") == 0 && GetContinentPercentage(color3, "South America") == 0 && GetContinentPercentage(color4, "South America") == 0 && GetContinentPercentage(color5, "South America") == 0 && GetContinentPercentage(color6, "South America") == 0)
+            {
+                int increase = rand.Next(4) + 2; ;
+                territoryChoiceRatings[0] += increase; territoryChoiceRatings[1] += increase; territoryChoiceRatings[2] += increase; territoryChoiceRatings[3] += increase;
+            }
+            if (GetContinentPercentage(color1, "North America") == 0 && GetContinentPercentage(color2, "North America") == 0 && GetContinentPercentage(color3, "North America") == 0 && GetContinentPercentage(color4, "North America") == 0 && GetContinentPercentage(color5, "North America") == 0 && GetContinentPercentage(color6, "North America") == 0)
+            {
+                int increase = rand.Next(3) + 1; ;
+                territoryChoiceRatings[4] += increase; territoryChoiceRatings[4] += increase; territoryChoiceRatings[5] += increase; territoryChoiceRatings[6] += increase; territoryChoiceRatings[7] += increase; territoryChoiceRatings[8] += increase; territoryChoiceRatings[9] += increase; territoryChoiceRatings[10] += increase; territoryChoiceRatings[11] += increase; territoryChoiceRatings[12] += increase;
+            }
+            if (GetContinentPercentage(color1, "Europe") == 0 && GetContinentPercentage(color2, "Europe") == 0 && GetContinentPercentage(color3, "Europe") == 0 && GetContinentPercentage(color4, "Europe") == 0 && GetContinentPercentage(color5, "Europe") == 0 && GetContinentPercentage(color6, "Europe") == 0)
+            {
+                int increase = rand.Next(3) + 1; ;
+                territoryChoiceRatings[19] += increase; territoryChoiceRatings[20] += increase; territoryChoiceRatings[21] += increase; territoryChoiceRatings[22] += increase; territoryChoiceRatings[23] += increase; territoryChoiceRatings[24] += increase; territoryChoiceRatings[25] += increase;
+            }
+            if (GetContinentPercentage(color1, "Asia") == 0 && GetContinentPercentage(color2, "Asia") == 0 && GetContinentPercentage(color3, "Asia") == 0 && GetContinentPercentage(color4, "Asia") == 0 && GetContinentPercentage(color5, "Asia") == 0 && GetContinentPercentage(color6, "Asia") == 0)
+            {
+                int increase = rand.Next(2) + 1; ;
+                territoryChoiceRatings[26] += increase; territoryChoiceRatings[27] += increase; territoryChoiceRatings[28] += increase; territoryChoiceRatings[29] += increase; territoryChoiceRatings[30] += increase; territoryChoiceRatings[31] += increase; territoryChoiceRatings[32] += increase; territoryChoiceRatings[33] += increase; territoryChoiceRatings[34] += increase; territoryChoiceRatings[35] += increase; territoryChoiceRatings[36] += increase; territoryChoiceRatings[37] += increase;
+            }
+            if (GetContinentPercentage(color1, "Africa") == 0 && GetContinentPercentage(color2, "Africa") == 0 && GetContinentPercentage(color3, "Africa") == 0 && GetContinentPercentage(color4, "Africa") == 0 && GetContinentPercentage(color5, "Africa") == 0 && GetContinentPercentage(color6, "Africa") == 0)
+            {
+                int increase = rand.Next(3) + 1; ;
+                territoryChoiceRatings[13] += increase; territoryChoiceRatings[14] += increase; territoryChoiceRatings[15] += increase; territoryChoiceRatings[16] += increase; territoryChoiceRatings[17] += increase; territoryChoiceRatings[18] += increase;
+            }
             int highestvalue = 0;
             int highestindex = -1;
             for (int x = 0; x < territoryChoiceRatings.Length; x++)
@@ -1665,7 +1725,10 @@ namespace Risk
                                     if (int.Parse(enemyTerritory.Text) > int.Parse(homeTerritory.Text))
                                     {
                                         territoryChoiceRatings[y] += int.Parse(enemyTerritory.Text) - int.Parse(homeTerritory.Text);
-
+                                    }
+                                    if (homeTerritory.Text == "1")
+                                    {
+                                        territoryChoiceRatings[y] += 2;
                                     }
                                 }
                             }
@@ -1691,6 +1754,83 @@ namespace Risk
                     }
                 }
             }
+        }
+
+        private double GetContinentPercentage(string ownerColor, string continent)
+        {
+            List<object> territoryArray = new List<object>();
+            if (continent == "South America")
+            {
+                territoryArray.Add(argentina);
+                territoryArray.Add(venezuela);
+                territoryArray.Add(peru);
+                territoryArray.Add(brazil);
+            }
+            if (continent == "North America")
+            {
+                territoryArray.Add(centralAmerica);
+                territoryArray.Add(westernUnitedStates);
+                territoryArray.Add(easternUnitedStates);
+                territoryArray.Add(alberta);
+                territoryArray.Add(ontario);
+                territoryArray.Add(quebec);
+                territoryArray.Add(greenLand);
+                territoryArray.Add(northWestTerritory);
+                territoryArray.Add(alaska);
+            }
+            if (continent == "Australia")
+            {
+                territoryArray.Add(easternAustralia);
+                territoryArray.Add(westernAustralia);
+                territoryArray.Add(indonesia);
+                territoryArray.Add(newGuinea);
+            }
+            if (continent == "Asia")
+            {
+                territoryArray.Add(afghanistan);
+                territoryArray.Add(india);
+                territoryArray.Add(siam);
+                territoryArray.Add(middleEast);
+                territoryArray.Add(china);
+                territoryArray.Add(mongolia);
+                territoryArray.Add(ural);
+                territoryArray.Add(siberia);
+                territoryArray.Add(irkutsk);
+                territoryArray.Add(yakutsk);
+                territoryArray.Add(japan);
+                territoryArray.Add(kamchatka);
+            }
+            if (continent == "Europe")
+            {
+                territoryArray.Add(iceland);
+                territoryArray.Add(scandinavia);
+                territoryArray.Add(greatBritain);
+                territoryArray.Add(northernEurope);
+                territoryArray.Add(westernEurope);
+                territoryArray.Add(southernEurope);
+                territoryArray.Add(ukraine);
+            }
+            if (continent == "Africa")
+            {
+                territoryArray.Add(northAfrica);
+                territoryArray.Add(egypt);
+                territoryArray.Add(eastAfrica);
+                territoryArray.Add(southAfrica);
+                territoryArray.Add(congo);
+                territoryArray.Add(madagascar);
+            }
+            double ownedTotal = 0;
+            double completeTotal = territoryArray.Count;
+            foreach (object territory in territoryArray)
+            {
+                if (color[senderdecryption(territory)] == ownerColor)
+                {
+                    ownedTotal++;
+                }
+            }
+            double continentPercentage = ownedTotal / completeTotal;
+            codeDeguggingTool.Items.Add(continentPercentage);
+            return continentPercentage;
         }
 
         private void deployedTroop()
