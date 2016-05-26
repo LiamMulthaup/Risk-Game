@@ -2044,9 +2044,9 @@
             this.BackgroundImage = global::Risk.Properties.Resources.pic1255403_md;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(793, 523);
+            this.Controls.Add(this.settingsPanel);
             this.Controls.Add(this.codeDeguggingTool);
             this.Controls.Add(this.beginGameGroup);
-            this.Controls.Add(this.settingsPanel);
             this.Controls.Add(this.winTransferGroup);
             this.Controls.Add(this.diceBox);
             this.Controls.Add(this.armiesTrackBar);
