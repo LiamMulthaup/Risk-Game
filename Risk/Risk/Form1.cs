@@ -157,6 +157,7 @@ namespace Risk
             bool finish = false;
             while (finish == false)
             {
+                newactiveTerritories.Clear();
                 int halfRepetitions = 0;
                 while (halfRepetitions < activeTerritories.Length)
                 {
@@ -174,7 +175,7 @@ namespace Risk
                             repeatedonce = true;
                             newactiveTerritories.Add(counter);
                             pathTracker[counter] = true;
-                            if (source == sender)
+                            if (source == attackingTerritory)
                             {
                                 newactiveTerritories.Clear();
                                 counter = territoryArray.Length;
@@ -386,7 +387,7 @@ namespace Risk
         private void Form1_Load(object sender, EventArgs e)
         {
             beginGameGroup.Location = new Point(120, 66);// Put the BeginGameGroup in the center of the screen.
-            playerCards[1] = new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+            playerCards[1] = new int[] { 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 1, 1, 1, 1 };
             playerCards[2] = new int[] { 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
         }
 
@@ -1040,7 +1041,7 @@ namespace Risk
             {
                 try
                 {
-                    for (int y = x; y < cardsToBeRemoved[y - 1]; y--)
+                    for (int y = x; cardsToBeRemoved[y] < cardsToBeRemoved[y - 1]; y--)
                     {
                         int xv = cardsToBeRemoved[y - 1];
                         int yv = cardsToBeRemoved[y];
@@ -1050,10 +1051,10 @@ namespace Risk
                 }
                 catch
                 {
-
+                    MessageBox.Show("Problem");
                 }
             }
-            for (int x = cardsToBeRemoved.Count - 1; x > 0; x--)
+            for (int x = cardsToBeRemoved.Count - 1; x >= 0; x--)
             {
                 PlayerCardPlaceHolder.RemoveAt(cardsToBeRemoved[x]);
             }
@@ -1584,7 +1585,7 @@ namespace Risk
                 turnPhase = 40;
                 aiDecisionIndex = 0;
                 aiDecisionTimer.Enabled = true;
-                aiDecisionTimer.Interval = 1000;
+                aiDecisionTimer.Interval = 100;
                 aiDecisionTimer.Start();
             }
         }
@@ -1610,71 +1611,59 @@ namespace Risk
                     {
                         if (CheckIfAdjacent(territoryArray[x], territoryArray[y]) == true)
                         {
-                            territoryChoiceRatings[y]+= rand.Next(2) + 1;
+                            territoryChoiceRatings[y] += rand.Next(2) + 1;
                         }
                     }
                 }
             }
             if (GetContinentPercentage(color1, "Australia") >= 0.75 || GetContinentPercentage(color2, "Australia") >= 0.75 || GetContinentPercentage(color3, "Australia") >= 0.75 || GetContinentPercentage(color4, "Australia") >= 0.75 || GetContinentPercentage(color5, "Australia") >= 0.75 || GetContinentPercentage(color6, "Australia") >= 0.75)
             {
-                int increase = rand.Next(4) + 2; ;
-                territoryChoiceRatings[38] += increase; territoryChoiceRatings[39] += increase; territoryChoiceRatings[40] += increase; territoryChoiceRatings[41] += increase;
+                territoryChoiceRatings[38] += rand.Next(4) + 2; territoryChoiceRatings[39] += rand.Next(4) + 2; territoryChoiceRatings[40] += rand.Next(4) + 2; territoryChoiceRatings[41] += rand.Next(4) + 2;
             }
             if (GetContinentPercentage(color1, "South America") >= 0.75 || GetContinentPercentage(color2, "South America") >= 0.75 || GetContinentPercentage(color3, "South America") >= 0.75 || GetContinentPercentage(color4, "South America") >= 0.75 || GetContinentPercentage(color5, "South America") >= 0.75 || GetContinentPercentage(color6, "South America") >= 0.75)
             {
-                int increase = rand.Next(4) + 2; ;
-                territoryChoiceRatings[0] += increase; territoryChoiceRatings[1] += increase; territoryChoiceRatings[2] += increase; territoryChoiceRatings[3] += increase;
+                territoryChoiceRatings[0] += rand.Next(4) + 2; territoryChoiceRatings[1] += rand.Next(4) + 2; territoryChoiceRatings[2] += rand.Next(4) + 2; territoryChoiceRatings[3] += rand.Next(4) + 2;
             }
             if (GetContinentPercentage(color1, "North America") >= 0.75 || GetContinentPercentage(color2, "North America") >= 0.75 || GetContinentPercentage(color3, "North America") >= 0.75 || GetContinentPercentage(color4, "North America") >= 0.75 || GetContinentPercentage(color5, "North America") >= 0.75 || GetContinentPercentage(color6, "North America") >= 0.75)
             {
-                int increase = rand.Next(3) + 1; ;
-                territoryChoiceRatings[4] += increase; territoryChoiceRatings[4] += increase; territoryChoiceRatings[5] += increase; territoryChoiceRatings[6] += increase; territoryChoiceRatings[7] += increase; territoryChoiceRatings[8] += increase; territoryChoiceRatings[9] += increase; territoryChoiceRatings[10] += increase; territoryChoiceRatings[11] += increase; territoryChoiceRatings[12] += increase;
+                territoryChoiceRatings[4] += rand.Next(3) + 1; territoryChoiceRatings[4] += rand.Next(3) + 1; territoryChoiceRatings[5] += rand.Next(3) + 1; territoryChoiceRatings[6] += rand.Next(3) + 1; territoryChoiceRatings[7] += rand.Next(3) + 1; territoryChoiceRatings[8] += rand.Next(3) + 1; territoryChoiceRatings[9] += rand.Next(3) + 1; territoryChoiceRatings[10] += rand.Next(3) + 1; territoryChoiceRatings[11] += rand.Next(3) + 1; territoryChoiceRatings[12] += rand.Next(3) + 1;
             }
             if (GetContinentPercentage(color1, "Europe") >= 0.75 || GetContinentPercentage(color2, "Europe") >= 0.75 || GetContinentPercentage(color3, "Europe") >= 0.75 || GetContinentPercentage(color4, "Europe") >= 0.75 || GetContinentPercentage(color5, "Europe") >= 0.75 || GetContinentPercentage(color6, "Europe") >= 0.75)
             {
-                int increase = rand.Next(3) + 1; ;
-                territoryChoiceRatings[19] += increase; territoryChoiceRatings[20] += increase; territoryChoiceRatings[21] += increase; territoryChoiceRatings[22] += increase; territoryChoiceRatings[23] += increase; territoryChoiceRatings[24] += increase; territoryChoiceRatings[25] += increase;
+                territoryChoiceRatings[19] += rand.Next(3) + 1; territoryChoiceRatings[20] += rand.Next(3) + 1; territoryChoiceRatings[21] += rand.Next(3) + 1; territoryChoiceRatings[22] += rand.Next(3) + 1; territoryChoiceRatings[23] += rand.Next(3) + 1; territoryChoiceRatings[24] += rand.Next(3) + 1; territoryChoiceRatings[25] += rand.Next(3) + 1;
             }
             if (GetContinentPercentage(color1, "Asia") >= 0.75 || GetContinentPercentage(color2, "Asia") >= 0.75 || GetContinentPercentage(color3, "Asia") >= 0.75 || GetContinentPercentage(color4, "Asia") >= 0.75 || GetContinentPercentage(color5, "Asia") >= 0.75 || GetContinentPercentage(color6, "Asia") >= 0.75)
             {
-                int increase = rand.Next(2) + 1; ;
-                territoryChoiceRatings[26] += increase; territoryChoiceRatings[27] += increase; territoryChoiceRatings[28] += increase; territoryChoiceRatings[29] += increase; territoryChoiceRatings[30] += increase; territoryChoiceRatings[31] += increase; territoryChoiceRatings[32] += increase; territoryChoiceRatings[33] += increase; territoryChoiceRatings[34] += increase; territoryChoiceRatings[35] += increase; territoryChoiceRatings[36] += increase; territoryChoiceRatings[37] += increase;
+                territoryChoiceRatings[26] += rand.Next(2) + 1; territoryChoiceRatings[27] += rand.Next(2) + 1; territoryChoiceRatings[28] += rand.Next(2) + 1; territoryChoiceRatings[29] += rand.Next(2) + 1; territoryChoiceRatings[30] += rand.Next(2) + 1; territoryChoiceRatings[31] += rand.Next(2) + 1; territoryChoiceRatings[32] += rand.Next(2) + 1; territoryChoiceRatings[33] += rand.Next(2) + 1; territoryChoiceRatings[34] += rand.Next(2) + 1; territoryChoiceRatings[35] += rand.Next(2) + 1; territoryChoiceRatings[36] += rand.Next(2) + 1; territoryChoiceRatings[37] += rand.Next(2) + 1;
             }
-            if (GetContinentPercentage(color1, "Africa") >= 0.75 && GetContinentPercentage(color2, "Africa") >= 0.75 && GetContinentPercentage(color3, "Africa") >= 0.75 && GetContinentPercentage(color4, "Africa") >= 0.75 && GetContinentPercentage(color5, "Africa") >= 0.75 && GetContinentPercentage(color6, "Africa") >= 0.75)
+            if (GetContinentPercentage(color1, "Africa") >= 0.75 || GetContinentPercentage(color2, "Africa") >= 0.75 || GetContinentPercentage(color3, "Africa") >= 0.75 || GetContinentPercentage(color4, "Africa") >= 0.75 || GetContinentPercentage(color5, "Africa") >= 0.75 || GetContinentPercentage(color6, "Africa") >= 0.75)
             {
-                int increase = rand.Next(3) + 1; ;
-                territoryChoiceRatings[13] += increase; territoryChoiceRatings[14] += increase; territoryChoiceRatings[15] += increase; territoryChoiceRatings[16] += increase; territoryChoiceRatings[17] += increase; territoryChoiceRatings[18] += increase;
+                territoryChoiceRatings[13] += rand.Next(3) + 1; territoryChoiceRatings[14] += rand.Next(3) + 1; territoryChoiceRatings[15] += rand.Next(3) + 1; territoryChoiceRatings[16] += rand.Next(3) + 1; territoryChoiceRatings[17] += rand.Next(3) + 1; territoryChoiceRatings[18] += rand.Next(3) + 1;
             }
 
             if (GetContinentPercentage(color1, "Australia") == 0 && GetContinentPercentage(color2, "Australia") == 0 && GetContinentPercentage(color3, "Australia") == 0 && GetContinentPercentage(color4, "Australia") == 0 && GetContinentPercentage(color5, "Australia") == 0 && GetContinentPercentage(color6, "Australia") == 0)
             {
-                int increase = rand.Next(4) + 2; ;
-                territoryChoiceRatings[38] += increase; territoryChoiceRatings[39] += increase; territoryChoiceRatings[40] += increase; territoryChoiceRatings[41] += increase;
+                territoryChoiceRatings[38] += rand.Next(4) + 2; territoryChoiceRatings[39] += rand.Next(4) + 2; territoryChoiceRatings[40] += rand.Next(4) + 2; territoryChoiceRatings[41] += rand.Next(4) + 2;
             }
             if (GetContinentPercentage(color1, "South America") == 0 && GetContinentPercentage(color2, "South America") == 0 && GetContinentPercentage(color3, "South America") == 0 && GetContinentPercentage(color4, "South America") == 0 && GetContinentPercentage(color5, "South America") == 0 && GetContinentPercentage(color6, "South America") == 0)
             {
-                int increase = rand.Next(4) + 2; ;
-                territoryChoiceRatings[0] += increase; territoryChoiceRatings[1] += increase; territoryChoiceRatings[2] += increase; territoryChoiceRatings[3] += increase;
+                territoryChoiceRatings[0] += rand.Next(4) + 2; territoryChoiceRatings[1] += rand.Next(4) + 2; territoryChoiceRatings[2] += rand.Next(4) + 2; territoryChoiceRatings[3] += rand.Next(4) + 2;
             }
             if (GetContinentPercentage(color1, "North America") == 0 && GetContinentPercentage(color2, "North America") == 0 && GetContinentPercentage(color3, "North America") == 0 && GetContinentPercentage(color4, "North America") == 0 && GetContinentPercentage(color5, "North America") == 0 && GetContinentPercentage(color6, "North America") == 0)
             {
-                int increase = rand.Next(3) + 1; ;
-                territoryChoiceRatings[4] += increase; territoryChoiceRatings[4] += increase; territoryChoiceRatings[5] += increase; territoryChoiceRatings[6] += increase; territoryChoiceRatings[7] += increase; territoryChoiceRatings[8] += increase; territoryChoiceRatings[9] += increase; territoryChoiceRatings[10] += increase; territoryChoiceRatings[11] += increase; territoryChoiceRatings[12] += increase;
+                territoryChoiceRatings[4] += rand.Next(3) + 1; territoryChoiceRatings[4] += rand.Next(3) + 1; territoryChoiceRatings[5] += rand.Next(3) + 1; territoryChoiceRatings[6] += rand.Next(3) + 1; territoryChoiceRatings[7] += rand.Next(3) + 1; territoryChoiceRatings[8] += rand.Next(3) + 1; territoryChoiceRatings[9] += rand.Next(3) + 1; territoryChoiceRatings[10] += rand.Next(3) + 1; territoryChoiceRatings[11] += rand.Next(3) + 1; territoryChoiceRatings[12] += rand.Next(3) + 1;
             }
             if (GetContinentPercentage(color1, "Europe") == 0 && GetContinentPercentage(color2, "Europe") == 0 && GetContinentPercentage(color3, "Europe") == 0 && GetContinentPercentage(color4, "Europe") == 0 && GetContinentPercentage(color5, "Europe") == 0 && GetContinentPercentage(color6, "Europe") == 0)
             {
-                int increase = rand.Next(3) + 1; ;
-                territoryChoiceRatings[19] += increase; territoryChoiceRatings[20] += increase; territoryChoiceRatings[21] += increase; territoryChoiceRatings[22] += increase; territoryChoiceRatings[23] += increase; territoryChoiceRatings[24] += increase; territoryChoiceRatings[25] += increase;
+                territoryChoiceRatings[19] += rand.Next(3) + 1; territoryChoiceRatings[20] += rand.Next(3) + 1; territoryChoiceRatings[21] += rand.Next(3) + 1; territoryChoiceRatings[22] += rand.Next(3) + 1; territoryChoiceRatings[23] += rand.Next(3) + 1; territoryChoiceRatings[24] += rand.Next(3) + 1; territoryChoiceRatings[25] += rand.Next(3) + 1;
             }
             if (GetContinentPercentage(color1, "Asia") == 0 && GetContinentPercentage(color2, "Asia") == 0 && GetContinentPercentage(color3, "Asia") == 0 && GetContinentPercentage(color4, "Asia") == 0 && GetContinentPercentage(color5, "Asia") == 0 && GetContinentPercentage(color6, "Asia") == 0)
             {
-                int increase = rand.Next(2) + 1; ;
-                territoryChoiceRatings[26] += increase; territoryChoiceRatings[27] += increase; territoryChoiceRatings[28] += increase; territoryChoiceRatings[29] += increase; territoryChoiceRatings[30] += increase; territoryChoiceRatings[31] += increase; territoryChoiceRatings[32] += increase; territoryChoiceRatings[33] += increase; territoryChoiceRatings[34] += increase; territoryChoiceRatings[35] += increase; territoryChoiceRatings[36] += increase; territoryChoiceRatings[37] += increase;
+                territoryChoiceRatings[26] += rand.Next(2) + 1; territoryChoiceRatings[27] += rand.Next(2) + 1; territoryChoiceRatings[28] += rand.Next(2) + 1; territoryChoiceRatings[29] += rand.Next(2) + 1; territoryChoiceRatings[30] += rand.Next(2) + 1; territoryChoiceRatings[31] += rand.Next(2) + 1; territoryChoiceRatings[32] += rand.Next(2) + 1; territoryChoiceRatings[33] += rand.Next(2) + 1; territoryChoiceRatings[34] += rand.Next(2) + 1; territoryChoiceRatings[35] += rand.Next(2) + 1; territoryChoiceRatings[36] += rand.Next(2) + 1; territoryChoiceRatings[37] += rand.Next(2) + 1;
             }
             if (GetContinentPercentage(color1, "Africa") == 0 && GetContinentPercentage(color2, "Africa") == 0 && GetContinentPercentage(color3, "Africa") == 0 && GetContinentPercentage(color4, "Africa") == 0 && GetContinentPercentage(color5, "Africa") == 0 && GetContinentPercentage(color6, "Africa") == 0)
             {
-                int increase = rand.Next(3) + 1; ;
-                territoryChoiceRatings[13] += increase; territoryChoiceRatings[14] += increase; territoryChoiceRatings[15] += increase; territoryChoiceRatings[16] += increase; territoryChoiceRatings[17] += increase; territoryChoiceRatings[18] += increase;
+                territoryChoiceRatings[13] += rand.Next(3) + 1; territoryChoiceRatings[14] += rand.Next(3) + 1; territoryChoiceRatings[15] += rand.Next(3) + 1; territoryChoiceRatings[16] += rand.Next(3) + 1; territoryChoiceRatings[17] += rand.Next(3) + 1; territoryChoiceRatings[18] += rand.Next(3) + 1;
             }
             int highestvalue = 0;
             int highestindex = -1;
@@ -2158,7 +2147,7 @@ namespace Risk
                 armiesTotal += 7;
             }
         }
-        private void recordPresentArmyData()
+        private void recordPresentArmyData()//stores present army data in an array.
         {
 
             numberData[0] = argentina.Text;
@@ -2204,7 +2193,7 @@ namespace Risk
             numberData[40] = westernAustralia.Text;
             numberData[41] = easternAustralia.Text;
         }
-        private void resetText()
+        private void resetText()//resets current army data with recorded army data.
         {
             argentina.Text = numberData[0];
             venezuela.Text = numberData[1];
@@ -2284,7 +2273,7 @@ namespace Risk
                 (territory == indonesia && (source == newGuinea || source == siam)) ||
                 (territory == siam && (source == india || source == china || source == indonesia)) ||
                 (territory == india && (source == siam || source == china || source == middleEast || source == afghanistan)) ||
-                (territory == middleEast && (source == eastAfrica || source == northAfrica || source == southernEurope || source == ukraine || source == afghanistan || source == india)) ||
+                (territory == middleEast && (source == eastAfrica || source == northAfrica || source == southernEurope || source == ukraine || source == afghanistan || source == india || source == egypt)) ||
                 (territory == afghanistan && (source == ukraine || source == middleEast || source == india || source == china || source == ural)) ||
                 (territory == china && (source == siberia || source == ural || source == afghanistan || source == india || source == siam || source == mongolia)) ||
                 (territory == ural && (source == ukraine || source == afghanistan || source == china || source == siberia)) ||
@@ -2377,6 +2366,7 @@ namespace Risk
                     bool finish = false;
                     while (finish == false)
                     {
+                        newactiveTerritories.Clear();
                         int halfRepetitions = 0;
                         while (halfRepetitions < activeTerritories.Length)
                         {
