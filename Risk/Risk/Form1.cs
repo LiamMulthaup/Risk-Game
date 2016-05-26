@@ -1386,45 +1386,48 @@ namespace Risk
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (turnPhase == 0)
             {
-                if (playerNumberTextBox.Text == "")
+                try
                 {
-                    players = 0;
-                    randomLabel8.Visible = false; randomLabel14.Visible = false; randomLabel15.Visible = false; nameText1.Visible = false; colorListBox1.Visible = false;
-                    randomLabel9.Visible = false; nameText2.Visible = false; colorListBox2.Visible = false;
-                    randomLabel10.Visible = false; nameText3.Visible = false; colorListBox3.Visible = false;
-                    randomLabel11.Visible = false; nameText4.Visible = false; colorListBox4.Visible = false;
-                    randomLabel12.Visible = false; nameText5.Visible = false; colorListBox5.Visible = false;
-                    randomLabel13.Visible = false; nameText6.Visible = false; colorListBox6.Visible = false;
-                    randomLabel16.Visible = false;
-                }
-                if (playerNumberTextBox.Text != "")
-                {
-                    randomLabel10.Visible = false; nameText3.Visible = false; colorListBox3.Visible = false;
-                    randomLabel11.Visible = false; nameText4.Visible = false; colorListBox4.Visible = false;
-                    randomLabel12.Visible = false; nameText5.Visible = false; colorListBox5.Visible = false;
-                    randomLabel13.Visible = false; nameText6.Visible = false; colorListBox6.Visible = false;
-                    players = int.Parse(playerNumberTextBox.Text);
-                    if (players > 6) { MessageBox.Show("No more than 6"); }
-                    else {
-                        if (players < 2) { MessageBox.Show("Need at least 2 players"); }
-                        if (players > 1)
-                        {
-                            orderButton.Visible = true;
-                            randomLabel8.Visible = true; randomLabel14.Visible = true; randomLabel15.Visible = true; nameText1.Visible = true; colorListBox1.Visible = true;
-                            randomLabel9.Visible = true; nameText2.Visible = true; colorListBox2.Visible = true; randomLabel16.Visible = true;
+                    if (playerNumberTextBox.Text == "")
+                    {
+                        players = 0;
+                        randomLabel8.Visible = false; randomLabel14.Visible = false; randomLabel15.Visible = false; nameText1.Visible = false; colorListBox1.Visible = false;
+                        randomLabel9.Visible = false; nameText2.Visible = false; colorListBox2.Visible = false;
+                        randomLabel10.Visible = false; nameText3.Visible = false; colorListBox3.Visible = false;
+                        randomLabel11.Visible = false; nameText4.Visible = false; colorListBox4.Visible = false;
+                        randomLabel12.Visible = false; nameText5.Visible = false; colorListBox5.Visible = false;
+                        randomLabel13.Visible = false; nameText6.Visible = false; colorListBox6.Visible = false;
+                        randomLabel16.Visible = false;
+                    }
+                    if (playerNumberTextBox.Text != "")
+                    {
+                        randomLabel10.Visible = false; nameText3.Visible = false; colorListBox3.Visible = false;
+                        randomLabel11.Visible = false; nameText4.Visible = false; colorListBox4.Visible = false;
+                        randomLabel12.Visible = false; nameText5.Visible = false; colorListBox5.Visible = false;
+                        randomLabel13.Visible = false; nameText6.Visible = false; colorListBox6.Visible = false;
+                        players = int.Parse(playerNumberTextBox.Text);
+                        if (players > 6) { MessageBox.Show("No more than 6"); }
+                        else {
+                            if (players < 2) { MessageBox.Show("Need at least 2 players"); }
+                            if (players > 1)
+                            {
+                                orderButton.Visible = true;
+                                randomLabel8.Visible = true; randomLabel14.Visible = true; randomLabel15.Visible = true; nameText1.Visible = true; colorListBox1.Visible = true;
+                                randomLabel9.Visible = true; nameText2.Visible = true; colorListBox2.Visible = true; randomLabel16.Visible = true;
+                            }
+                            if (players > 2) { randomLabel10.Visible = true; nameText3.Visible = true; colorListBox3.Visible = true; }
+                            if (players > 3) { randomLabel11.Visible = true; nameText4.Visible = true; colorListBox4.Visible = true; }
+                            if (players > 4) { randomLabel12.Visible = true; nameText5.Visible = true; colorListBox5.Visible = true; }
+                            if (players > 5) { randomLabel13.Visible = true; nameText6.Visible = true; colorListBox6.Visible = true; }
                         }
-                        if (players > 2) { randomLabel10.Visible = true; nameText3.Visible = true; colorListBox3.Visible = true; }
-                        if (players > 3) { randomLabel11.Visible = true; nameText4.Visible = true; colorListBox4.Visible = true; }
-                        if (players > 4) { randomLabel12.Visible = true; nameText5.Visible = true; colorListBox5.Visible = true; }
-                        if (players > 5) { randomLabel13.Visible = true; nameText6.Visible = true; colorListBox6.Visible = true; }
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("invalid number");
+                catch
+                {
+                    MessageBox.Show("invalid number");
+                }
             }
         }
 

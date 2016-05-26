@@ -1128,7 +1128,7 @@
             this.beginGameGroup.Controls.Add(this.orderButton);
             this.beginGameGroup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.beginGameGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginGameGroup.Location = new System.Drawing.Point(780, 489);
+            this.beginGameGroup.Location = new System.Drawing.Point(162, 98);
             this.beginGameGroup.Name = "beginGameGroup";
             this.beginGameGroup.Size = new System.Drawing.Size(569, 400);
             this.beginGameGroup.TabIndex = 55;
@@ -1145,6 +1145,7 @@
             this.aiCheckBox6.TabIndex = 38;
             this.aiCheckBox6.Text = "AI";
             this.aiCheckBox6.UseVisualStyleBackColor = true;
+            this.aiCheckBox6.Visible = false;
             this.aiCheckBox6.CheckedChanged += new System.EventHandler(this.aiCheckBox6_CheckedChanged);
             // 
             // aiCheckBox5
@@ -1157,6 +1158,7 @@
             this.aiCheckBox5.TabIndex = 37;
             this.aiCheckBox5.Text = "AI";
             this.aiCheckBox5.UseVisualStyleBackColor = true;
+            this.aiCheckBox5.Visible = false;
             this.aiCheckBox5.CheckedChanged += new System.EventHandler(this.aiCheckBox5_CheckedChanged);
             // 
             // aiCheckBox4
@@ -1169,6 +1171,7 @@
             this.aiCheckBox4.TabIndex = 36;
             this.aiCheckBox4.Text = "AI";
             this.aiCheckBox4.UseVisualStyleBackColor = true;
+            this.aiCheckBox4.Visible = false;
             this.aiCheckBox4.CheckedChanged += new System.EventHandler(this.aiCheckBox4_CheckedChanged);
             // 
             // aiCheckBox3
@@ -1181,6 +1184,7 @@
             this.aiCheckBox3.TabIndex = 35;
             this.aiCheckBox3.Text = "AI";
             this.aiCheckBox3.UseVisualStyleBackColor = true;
+            this.aiCheckBox3.Visible = false;
             this.aiCheckBox3.CheckedChanged += new System.EventHandler(this.aiCheckBox3_CheckedChanged);
             // 
             // aiCheckBox2
@@ -1193,6 +1197,7 @@
             this.aiCheckBox2.TabIndex = 34;
             this.aiCheckBox2.Text = "AI";
             this.aiCheckBox2.UseVisualStyleBackColor = true;
+            this.aiCheckBox2.Visible = false;
             this.aiCheckBox2.CheckedChanged += new System.EventHandler(this.aiCheckBox2_CheckedChanged);
             // 
             // aiCheckBox1
@@ -1205,6 +1210,7 @@
             this.aiCheckBox1.TabIndex = 33;
             this.aiCheckBox1.Text = "AI";
             this.aiCheckBox1.UseVisualStyleBackColor = true;
+            this.aiCheckBox1.Visible = false;
             this.aiCheckBox1.CheckedChanged += new System.EventHandler(this.aiCheckBox1_CheckedChanged);
             // 
             // settingsButton
