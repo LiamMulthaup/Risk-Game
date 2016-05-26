@@ -1375,8 +1375,8 @@ namespace Risk
 
         private void finishAttackingButton_Click(object sender, EventArgs e)
         {
-
-
+            attackingTerritoryText.Text = "";
+            deffendingTerritoryText.Text = "";
             attackingArmiesText.Text = "";
             attackingBox.Visible = false;
             transferBox.Visible = true;
