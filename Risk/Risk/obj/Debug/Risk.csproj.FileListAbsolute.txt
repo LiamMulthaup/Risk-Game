@@ -61,3 +61,5 @@ C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.RiskB
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.ProjectMenu.resources
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.Properties.Resources.resources
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.csproj.GenerateResource.Cache
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.riskInstructions.resources
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.Comments.resources

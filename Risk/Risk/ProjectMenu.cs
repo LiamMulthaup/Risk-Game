@@ -38,5 +38,17 @@ namespace Risk
         {
 
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            riskInstructions frm = new riskInstructions();
+            frm.Show();
+        }
+
+        private void commentsLabel_Click(object sender, EventArgs e)
+        {
+            Comments frm = new Comments();
+            frm.Show();
+        }
     }
 }

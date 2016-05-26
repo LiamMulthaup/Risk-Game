@@ -1128,7 +1128,7 @@
             this.beginGameGroup.Controls.Add(this.orderButton);
             this.beginGameGroup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.beginGameGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginGameGroup.Location = new System.Drawing.Point(771, 496);
+            this.beginGameGroup.Location = new System.Drawing.Point(780, 489);
             this.beginGameGroup.Name = "beginGameGroup";
             this.beginGameGroup.Size = new System.Drawing.Size(569, 400);
             this.beginGameGroup.TabIndex = 55;
@@ -2036,6 +2036,7 @@
             this.codeDeguggingTool.Name = "codeDeguggingTool";
             this.codeDeguggingTool.Size = new System.Drawing.Size(54, 95);
             this.codeDeguggingTool.TabIndex = 63;
+            this.codeDeguggingTool.Visible = false;
             // 
             // RiskBoard
             // 

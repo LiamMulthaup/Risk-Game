@@ -1818,7 +1818,7 @@ namespace Risk
                 }
             }
             double continentPercentage = ownedTotal / completeTotal;
-            codeDeguggingTool.Items.Add(continentPercentage);
+            codeDeguggingTool.Items.Add(continentPercentage);// used for programmer use. Shows a list of values for the programmer to use in debugging.
             return continentPercentage;
         }
 

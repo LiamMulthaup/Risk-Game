@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Overview: Risk is a turn based strategy game designed around world domination. The Risk board is divided up into territories and continents. Each territory is controlled by a player and to win, a player must take over all of the territories on the map.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Setup: Players take turns choosing territories, placing armies around the board. Click the little plus signs to claim a territory and add armies. If an army is already placed, click it again to add another army. Based on how many players are in the game, each player starts out with a certain amount of armies. If two are playing, each player gets 40. If 3 are playing each player gets 35. If 4 are playing each player gets 30. etc.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Deploying: Each player begins his or her turn by receiving a certain amount of armies. This amount of armies is determined by how many territories he or she has plus any continent bonuses. To determine how many armies a player is to receive, you take their # of territories and devide that by 3, rounding down to the nearest whole number. For example, someone with 7 territories would receive 2 armies, someone with 11 territories would receive 3 armies, and someone with 15 armies would receive 5 armies.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Gameplay: Once all players are done distributing, it is time for the actual playing to begin. Players start with the deployement phase, then into the attacking phase, and then go into the transferring phase.</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Continent Bonuses: If someone controls all of the territories in a continent, they will receive a bonus in armies depending on the continent. North America (yellow) is worth 5 armies. South America (orange) is worth 2 armies. Africa (brown) is worth 3 armies.  Europe (blue) is worth 5 armies. Asia (green) is worth 7 armies. Australia (grey) is worth 2 armies.</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Attacking Phase: After a player is done placing new armies. He can now choose to attack someone. You can attack as many times as you want each turn. To attack, click the territory you want to attack from (This should be a territory you own). Then click the territory you want to attack (needs to be adjacent to the territory you are attacking from). From there you choose how many armies you want to attack with and click the attack button. Once you are attacking you are given a certain amount of dice and the defender is given a certain amount of dice. If the attacker is attacking with 1 army, he gets one dice. If he is attacking with two dice he gets 2 dice. If he is attacking with 3 or more armies, he gets 3 dice. The defender gets 1 dice if he has 1 army, 2 dice if he has 2 or more armies.</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Attacking Phase (continued): Once the dice are rolled, the highest dice of the attacker and the highest dice of the defender are compared. Whoevers dice is higher wins and the opposing side loses an army. Defender wins all ties. If there are any more dice, the second highest dice of both players are then compared. They are compared just like the highest dice and the loser loses an army.</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Cards: If the attacker succeeded in taking over at least one territory he receives a card at the end of his turn. Cards can be used at the beginning of the turn for extra army bonuses. If a player uses 3 cards of similar or different type at the start of his turn he'll receive an army bonus. The 1st army bonus is 3 armies. The 2nd bonus is 6 armies. The 3rd bonus is 9 armies. etc.</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Transferring: After the player is done attacking, he can choose to transfer troops from one territory to another location. They are allowed to transfer troops once a turn. To transfer armies, click the source territory, then the receiving territory, and specify how many armies you want to transfer.  You can only transfer between two territories if they are connected by territories you own.</value>
+  </data>
+</root>
