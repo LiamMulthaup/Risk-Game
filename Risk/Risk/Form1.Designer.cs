@@ -189,6 +189,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.aiDecisionTimer = new System.Windows.Forms.Timer(this.components);
             this.codeDeguggingTool = new System.Windows.Forms.ListBox();
+            this.initialDistributionRandomSetting = new System.Windows.Forms.CheckBox();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -1128,7 +1129,7 @@
             this.beginGameGroup.Controls.Add(this.orderButton);
             this.beginGameGroup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.beginGameGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginGameGroup.Location = new System.Drawing.Point(162, 98);
+            this.beginGameGroup.Location = new System.Drawing.Point(780, 494);
             this.beginGameGroup.Name = "beginGameGroup";
             this.beginGameGroup.Size = new System.Drawing.Size(569, 400);
             this.beginGameGroup.TabIndex = 55;
@@ -1987,11 +1988,12 @@
             // settingsPanel
             // 
             this.settingsPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.settingsPanel.Controls.Add(this.initialDistributionRandomSetting);
             this.settingsPanel.Controls.Add(this.closeSettingsPanel);
             this.settingsPanel.Controls.Add(this.cardIncreasingSettingCheckBox);
             this.settingsPanel.Controls.Add(this.label2);
             this.settingsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsPanel.Location = new System.Drawing.Point(756, 510);
+            this.settingsPanel.Location = new System.Drawing.Point(23, 59);
             this.settingsPanel.Name = "settingsPanel";
             this.settingsPanel.Size = new System.Drawing.Size(742, 439);
             this.settingsPanel.TabIndex = 62;
@@ -2043,6 +2045,16 @@
             this.codeDeguggingTool.Size = new System.Drawing.Size(54, 95);
             this.codeDeguggingTool.TabIndex = 63;
             this.codeDeguggingTool.Visible = false;
+            // 
+            // initialDistributionRandomSetting
+            // 
+            this.initialDistributionRandomSetting.AutoSize = true;
+            this.initialDistributionRandomSetting.Location = new System.Drawing.Point(268, 137);
+            this.initialDistributionRandomSetting.Name = "initialDistributionRandomSetting";
+            this.initialDistributionRandomSetting.Size = new System.Drawing.Size(188, 24);
+            this.initialDistributionRandomSetting.TabIndex = 3;
+            this.initialDistributionRandomSetting.Text = "Distribution is Random";
+            this.initialDistributionRandomSetting.UseVisualStyleBackColor = true;
             // 
             // RiskBoard
             // 
@@ -2306,6 +2318,7 @@
         private System.Windows.Forms.CheckBox aiCheckBox1;
         private System.Windows.Forms.Timer aiDecisionTimer;
         private System.Windows.Forms.ListBox codeDeguggingTool;
+        private System.Windows.Forms.CheckBox initialDistributionRandomSetting;
     }
 }
 

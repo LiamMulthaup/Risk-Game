@@ -107,7 +107,7 @@ namespace Risk
                 {
                     setColorTerritory(lbl, colorid);
                     lbl.Text = "1";
-                    if (isAI[playerNumber] == false)
+                    if (isAI[playerNumber] == false && initialDistributionRandomSetting.Checked == false)
                     {
                         checkTurn();
                         initialdeployTroops();
@@ -119,7 +119,7 @@ namespace Risk
                 }
                 if ((turnColor == "red" && lbl.BackColor == System.Drawing.Color.Red) || (turnColor == "blue" && lbl.BackColor == System.Drawing.Color.LightBlue) || (turnColor == "green" && lbl.BackColor == System.Drawing.Color.Green) || (turnColor == "brown" && lbl.BackColor == System.Drawing.Color.Tan) || (turnColor == "purple" && lbl.BackColor == System.Drawing.Color.MediumPurple) || (turnColor == "pink" && lbl.BackColor == System.Drawing.Color.Pink))
                 {
-                    if (isAI[playerNumber] == false)
+                    if (isAI[playerNumber] == false && initialDistributionRandomSetting.Checked == false)
                     {
                         lbl.Text = (int.Parse(lbl.Text) + 1).ToString();
                         checkTurn();
@@ -1013,7 +1013,7 @@ namespace Risk
 
         private void useCardButton_Click(object sender, EventArgs e)
         {
-            if (selectedPlayerCards.Count == 3 && playerCards[playerNumber][selectedPlayerCards[0]] != playerCards[playerNumber][selectedPlayerCards[1]] && playerCards[playerNumber][selectedPlayerCards[0]] != playerCards[playerNumber][selectedPlayerCards[2]] && playerCards[playerNumber][selectedPlayerCards[1]] != playerCards[playerNumber][selectedPlayerCards[2]])
+            if (selectedPlayerCards.Count == 3 && ((playerCards[playerNumber][selectedPlayerCards[0]] != playerCards[playerNumber][selectedPlayerCards[1]] && playerCards[playerNumber][selectedPlayerCards[0]] != playerCards[playerNumber][selectedPlayerCards[2]] && playerCards[playerNumber][selectedPlayerCards[1]] != playerCards[playerNumber][selectedPlayerCards[2]]) || (playerCards[playerNumber][selectedPlayerCards[0]] == playerCards[playerNumber][selectedPlayerCards[1]] && playerCards[playerNumber][selectedPlayerCards[0]] == playerCards[playerNumber][selectedPlayerCards[2]])))
             {
                 if (cardIncrementingSetting == true)
                 {
@@ -1051,7 +1051,7 @@ namespace Risk
                 }
                 catch
                 {
-                    MessageBox.Show("Problem");
+
                 }
             }
             for (int x = cardsToBeRemoved.Count - 1; x >= 0; x--)
@@ -1583,7 +1583,7 @@ namespace Risk
                     turn++;//Go to next turn.
                 }
             }
-            if (isAI[playerNumber] == true)
+            if (isAI[playerNumber] == true || initialDistributionRandomSetting.Checked == true && turnPhase == 1)
             {
                 turnPhase = 40;
                 aiDecisionIndex = 0;
@@ -1593,7 +1593,7 @@ namespace Risk
             }
         }
 
-        private object AIInitialDeployment()
+        private object AIInitialDeployment()// Uses Rating and priorities to determine where to initially distribute armies in initial deployment.
         {
             Random rand = new Random();
             turnPhase = 1;
