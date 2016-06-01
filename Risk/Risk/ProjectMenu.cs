@@ -27,7 +27,7 @@ namespace Risk
         {
             label1.Visible = false;
             label2.Visible = false;
-            label3.Visible = false;
+            creditsButton.Visible = false;
             label4.Visible = false;
         }
         private void resizing(object sender, EventArgs e)
@@ -36,7 +36,8 @@ namespace Risk
 
         private void label3_Click(object sender, EventArgs e)
         {
-
+            credits frm = new credits();
+            frm.Show();
         }
 
         private void label5_Click(object sender, EventArgs e)

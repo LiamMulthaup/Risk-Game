@@ -50,6 +50,12 @@
     <Compile Include="Comments.Designer.cs">
       <DependentUpon>Comments.cs</DependentUpon>
     </Compile>
+    <Compile Include="credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="credits.Designer.cs">
+      <DependentUpon>credits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Comments.resx">
       <DependentUpon>Comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="credits.resx">
+      <DependentUpon>credits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

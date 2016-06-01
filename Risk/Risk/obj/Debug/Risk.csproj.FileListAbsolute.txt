@@ -63,3 +63,4 @@ C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.Prope
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.csproj.GenerateResource.Cache
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.riskInstructions.resources
 C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.Comments.resources
+C:\Users\Liam Multhaup\Documents\GitHub\Risk-Game\Risk\Risk\obj\Debug\Risk.credits.resources
