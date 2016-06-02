@@ -36,9 +36,9 @@
             this.commentButton = new System.Windows.Forms.Button();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.loginPanel = new System.Windows.Forms.Panel();
-            this.usernameLabel = new System.Windows.Forms.Label();
-            this.usernameTextbox = new System.Windows.Forms.TextBox();
             this.beginButton = new System.Windows.Forms.Button();
+            this.usernameTextbox = new System.Windows.Forms.TextBox();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.loginPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,7 @@
             this.commentViewer.AccessibleDescription = "";
             this.commentViewer.AccessibleName = "";
             this.commentViewer.FormattingEnabled = true;
+            this.commentViewer.HorizontalExtent = 400;
             this.commentViewer.Location = new System.Drawing.Point(24, 105);
             this.commentViewer.Name = "commentViewer";
             this.commentViewer.Size = new System.Drawing.Size(238, 290);
@@ -91,6 +92,7 @@
             // 
             // refreshTimer
             // 
+            this.refreshTimer.Interval = 1000;
             this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
             // 
             // loginPanel
@@ -103,22 +105,6 @@
             this.loginPanel.Size = new System.Drawing.Size(260, 87);
             this.loginPanel.TabIndex = 5;
             // 
-            // usernameLabel
-            // 
-            this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(41, 37);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(58, 13);
-            this.usernameLabel.TabIndex = 0;
-            this.usernameLabel.Text = "Username:";
-            // 
-            // usernameTextbox
-            // 
-            this.usernameTextbox.Location = new System.Drawing.Point(105, 34);
-            this.usernameTextbox.Name = "usernameTextbox";
-            this.usernameTextbox.Size = new System.Drawing.Size(100, 20);
-            this.usernameTextbox.TabIndex = 0;
-            // 
             // beginButton
             // 
             this.beginButton.Location = new System.Drawing.Point(84, 60);
@@ -128,6 +114,22 @@
             this.beginButton.Text = "Begin";
             this.beginButton.UseVisualStyleBackColor = true;
             this.beginButton.Click += new System.EventHandler(this.beginButton_Click);
+            // 
+            // usernameTextbox
+            // 
+            this.usernameTextbox.Location = new System.Drawing.Point(105, 34);
+            this.usernameTextbox.Name = "usernameTextbox";
+            this.usernameTextbox.Size = new System.Drawing.Size(100, 20);
+            this.usernameTextbox.TabIndex = 0;
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(41, 37);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(58, 13);
+            this.usernameLabel.TabIndex = 0;
+            this.usernameLabel.Text = "Username:";
             // 
             // Comments
             // 

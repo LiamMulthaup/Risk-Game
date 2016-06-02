@@ -8,7 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+//Liam Multhaup
+//Semester 2 Spring, 2015 - 2016
+//Visual Studio.Net
+//@Risk-Game
 namespace Risk
 {
     public partial class RiskBoard : Form
@@ -117,7 +120,7 @@ namespace Risk
                         checkTurn();
                     }
                 }
-                if ((turnColor == "red" && lbl.BackColor == System.Drawing.Color.Red) || (turnColor == "blue" && lbl.BackColor == System.Drawing.Color.LightBlue) || (turnColor == "green" && lbl.BackColor == System.Drawing.Color.Green) || (turnColor == "brown" && lbl.BackColor == System.Drawing.Color.Tan) || (turnColor == "purple" && lbl.BackColor == System.Drawing.Color.MediumPurple) || (turnColor == "pink" && lbl.BackColor == System.Drawing.Color.Pink))
+                if ((turnColor == "red" && lbl.BackColor == System.Drawing.Color.Red) || (turnColor == "blue" && lbl.BackColor == System.Drawing.Color.LightBlue) || (turnColor == "green" && lbl.BackColor == System.Drawing.Color.Green) || (turnColor == "brown" && lbl.BackColor == System.Drawing.Color.Tan) || (turnColor == "purple" && lbl.BackColor == System.Drawing.Color.MediumPurple) || (turnColor == "pink" && lbl.BackColor == System.Drawing.Color.HotPink))
                 {
                     if (isAI[playerNumber] == false && initialDistributionRandomSetting.Checked == false)
                     {
@@ -287,7 +290,7 @@ namespace Risk
 
             if (turnColor == "pink")
             {
-                lbl.BackColor = System.Drawing.Color.Pink;
+                lbl.BackColor = System.Drawing.Color.HotPink;
             }
         }
 
@@ -564,6 +567,9 @@ namespace Risk
                 armiesTrackBar.Visible = false;
                 attackingArmies.Text = (armiesTrackBar.Value).ToString();
                 deffendingArmies.Text = deffendingTroops.ToString();
+                attackButton.Visible = false;
+                finishAttackingButton.Visible = false;
+                backButton.Visible = false;
                 attackingMethod();
             }
         }
@@ -1222,6 +1228,7 @@ namespace Risk
                 }
             }
         }
+
         private void getCards()
         {
             int SIZE;
@@ -2249,8 +2256,8 @@ namespace Risk
                 (territory == venezuela && (source == brazil || source == peru || source == centralAmerica)) ||
                 (territory == brazil && (source == northAfrica || source == argentina || source == venezuela || source == peru)) ||
                 (territory == centralAmerica && (source == venezuela || source == easternUnitedStates || source == westernUnitedStates)) ||
-                (territory == easternUnitedStates && (source == westernUnitedStates || source == centralAmerica || source == alberta || source == ontario)) ||
-                (territory == westernUnitedStates && (source == centralAmerica || source == easternUnitedStates || source == quebec || source == ontario)) ||
+                (territory == easternUnitedStates && (source == westernUnitedStates || source == centralAmerica || source == quebec || source == ontario)) ||
+                (territory == westernUnitedStates && (source == centralAmerica || source == easternUnitedStates || source == alberta || source == ontario)) ||
                 (territory == quebec && (source == ontario || source == greenLand || source == easternUnitedStates)) ||
                 (territory == ontario && (source == quebec || source == easternUnitedStates || source == westernUnitedStates || source == alberta || source == northWestTerritory || source == alaska || source == greenLand)) ||
                 (territory == alberta && (source == ontario || source == northWestTerritory || source == alaska || source == westernUnitedStates)) ||
@@ -2313,6 +2320,9 @@ namespace Risk
             lbl.Text = deffendingArmies.Text;
             if (win == true)
             { setColorTerritory(lbl, senderdecryption(defendingTerritory)); }
+            finishAttackingButton.Visible = true;
+            attackButton.Visible = true;
+            backButton.Visible = true;
         }
 
         private void AIRunGame()

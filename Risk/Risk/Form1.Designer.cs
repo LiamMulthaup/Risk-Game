@@ -184,12 +184,12 @@
             this.winTransferAmount = new System.Windows.Forms.Label();
             this.randomLabel25 = new System.Windows.Forms.Label();
             this.settingsPanel = new System.Windows.Forms.Panel();
+            this.initialDistributionRandomSetting = new System.Windows.Forms.CheckBox();
             this.closeSettingsPanel = new System.Windows.Forms.Button();
             this.cardIncreasingSettingCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.aiDecisionTimer = new System.Windows.Forms.Timer(this.components);
             this.codeDeguggingTool = new System.Windows.Forms.ListBox();
-            this.initialDistributionRandomSetting = new System.Windows.Forms.CheckBox();
             this.attackingBox.SuspendLayout();
             this.deployBox.SuspendLayout();
             this.transferBox.SuspendLayout();
@@ -1993,11 +1993,21 @@
             this.settingsPanel.Controls.Add(this.cardIncreasingSettingCheckBox);
             this.settingsPanel.Controls.Add(this.label2);
             this.settingsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsPanel.Location = new System.Drawing.Point(23, 59);
+            this.settingsPanel.Location = new System.Drawing.Point(770, 510);
             this.settingsPanel.Name = "settingsPanel";
             this.settingsPanel.Size = new System.Drawing.Size(742, 439);
             this.settingsPanel.TabIndex = 62;
             this.settingsPanel.Visible = false;
+            // 
+            // initialDistributionRandomSetting
+            // 
+            this.initialDistributionRandomSetting.AutoSize = true;
+            this.initialDistributionRandomSetting.Location = new System.Drawing.Point(268, 137);
+            this.initialDistributionRandomSetting.Name = "initialDistributionRandomSetting";
+            this.initialDistributionRandomSetting.Size = new System.Drawing.Size(188, 24);
+            this.initialDistributionRandomSetting.TabIndex = 3;
+            this.initialDistributionRandomSetting.Text = "Distribution is Random";
+            this.initialDistributionRandomSetting.UseVisualStyleBackColor = true;
             // 
             // closeSettingsPanel
             // 
@@ -2045,16 +2055,6 @@
             this.codeDeguggingTool.Size = new System.Drawing.Size(54, 95);
             this.codeDeguggingTool.TabIndex = 63;
             this.codeDeguggingTool.Visible = false;
-            // 
-            // initialDistributionRandomSetting
-            // 
-            this.initialDistributionRandomSetting.AutoSize = true;
-            this.initialDistributionRandomSetting.Location = new System.Drawing.Point(268, 137);
-            this.initialDistributionRandomSetting.Name = "initialDistributionRandomSetting";
-            this.initialDistributionRandomSetting.Size = new System.Drawing.Size(188, 24);
-            this.initialDistributionRandomSetting.TabIndex = 3;
-            this.initialDistributionRandomSetting.Text = "Distribution is Random";
-            this.initialDistributionRandomSetting.UseVisualStyleBackColor = true;
             // 
             // RiskBoard
             // 
@@ -2116,10 +2116,10 @@
             this.Controls.Add(this.peru);
             this.Controls.Add(this.brazil);
             this.Controls.Add(this.argentina);
-            this.Controls.Add(this.transferBox);
-            this.Controls.Add(this.choosingBox);
             this.Controls.Add(this.attackingBox);
             this.Controls.Add(this.deployBox);
+            this.Controls.Add(this.transferBox);
+            this.Controls.Add(this.choosingBox);
             this.MaximizeBox = false;
             this.Name = "RiskBoard";
             this.Text = "Risk";
